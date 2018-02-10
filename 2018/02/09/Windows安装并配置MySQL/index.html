@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MySQL,数据库," />
 
 
 
@@ -79,13 +79,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="东皇">
-<meta property="og:url" content="http://yoursite.com/tags/hexo/index.html">
+<meta name="description" content="Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。1、安装部分略去，直接从初始化开始2、将安装的文件路径一律去掉空格3、根目录下新建data文件夹4、根目录下新建my.ini，内容如图5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下，执行命令。这一步的内容就意味着MySQL数据库按照my.ini的设定进行初始化6、进行下一步的安装">
+<meta name="keywords" content="MySQL,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows安装并配置MySQL">
+<meta property="og:url" content="http://yoursite.com/2018/02/09/Windows安装并配置MySQL/index.html">
 <meta property="og:site_name" content="东皇">
+<meta property="og:description" content="Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。1、安装部分略去，直接从初始化开始2、将安装的文件路径一律去掉空格3、根目录下新建data文件夹4、根目录下新建my.ini，内容如图5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下，执行命令。这一步的内容就意味着MySQL数据库按照my.ini的设定进行初始化6、进行下一步的安装">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/18.png">
+<meta property="og:image" content="http://yoursite.com/images/19.png">
+<meta property="og:image" content="http://yoursite.com/images/20.png">
+<meta property="og:image" content="http://yoursite.com/images/21.png">
+<meta property="og:image" content="http://yoursite.com/images/22.png">
+<meta property="og:image" content="http://yoursite.com/images/23.png">
+<meta property="og:image" content="http://yoursite.com/images/24.png">
+<meta property="og:image" content="http://yoursite.com/images/25.png">
+<meta property="og:image" content="http://yoursite.com/images/26.png">
+<meta property="og:image" content="http://yoursite.com/images/27.png">
+<meta property="og:image" content="http://yoursite.com/images/28.png">
+<meta property="og:image" content="http://yoursite.com/images/29.png">
+<meta property="og:image" content="http://yoursite.com/images/30.png">
+<meta property="og:image" content="http://yoursite.com/images/31.png">
+<meta property="og:image" content="http://yoursite.com/images/32.png">
+<meta property="og:updated_time" content="2018-02-09T10:11:41.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="东皇">
+<meta name="twitter:title" content="Windows安装并配置MySQL">
+<meta name="twitter:description" content="Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。1、安装部分略去，直接从初始化开始2、将安装的文件路径一律去掉空格3、根目录下新建data文件夹4、根目录下新建my.ini，内容如图5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下，执行命令。这一步的内容就意味着MySQL数据库按照my.ini的设定进行初始化6、进行下一步的安装">
+<meta name="twitter:image" content="http://yoursite.com/images/18.png">
 
 
 
@@ -115,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/09/Windows安装并配置MySQL/"/>
 
 
 
 
 
-  <title>标签: hexo | 东皇</title>
+  <title>Windows安装并配置MySQL | 东皇</title>
   
 
 
@@ -140,7 +161,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/saberxxy"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png" target="_blank"></a>
 
@@ -255,110 +276,184 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>hexo<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/09/Windows安装并配置MySQL/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Albert Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yanmoai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东皇">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/01/30/hexo设置指定不渲染的页面/" itemprop="url">
-              
-                <span itemprop="name">hexo设置指定不渲染的页面</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Windows安装并配置MySQL</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-30T20:34:50+08:00"
-              content="2018-01-30" >
-          01-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T18:04:10+08:00">
+                2018-02-09
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/28/从买域名到博客发布，中间遇到的坑和趟过的雷/" itemprop="url">
-              
-                <span itemprop="name">从买域名到博客发布，中间遇到的坑和趟过的雷</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-28T19:57:37+08:00"
-              content="2018-01-28" >
-          01-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/27/第一个Hexo博客测试/" itemprop="url">
-              
-                <span itemprop="name">第一个Hexo博客测试</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-27T19:36:00+08:00"
-              content="2018-01-27" >
-          01-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p><em>Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。</em><br>1、安装部分略去，直接从初始化开始<br>2、将安装的文件路径一律去掉空格<br><img src="/images/18.png" alt="图片四"><br>3、根目录下新建data文件夹<br>4、根目录下新建my.ini，内容如图<br><img src="/images/19.png" alt="图片四"><br>5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下，执行命令。这一步的内容就意味着MySQL数据库按照my.ini的设定进行初始化<br><img src="/images/20.png" alt="图片四"><br>6、进行下一步的安装，安装成功<br><img src="/images/21.png" alt="图片四"><br>7、启动MySQL服务，这里会卡住，没有任何信息，只要不报错就代表启动成功<br><img src="/images/22.png" alt="图片四"><br>8、另开一个窗口测试是否成功，发现可以登录成功，写条SQL测试一下，发现没有问题<br><img src="/images/23.png" alt="图片四"><br><img src="/images/24.png" alt="图片四"><br>9、修改root密码，让root用户必须使用密码才能登录<br><img src="/images/25.png" alt="图片四"><br>10、配置环境变量，配置之前，先用密码登录一下，看看情况，如果能成功则进行配置<br><img src="/images/26.png" alt="图片四"><br><img src="/images/27.png" alt="图片四"><br>win10是列表编辑的形式，配置比较简单，win7要注意分号<br><img src="/images/28.png" alt="图片四"><br>11、保存退出过后，验证一下<br><img src="/images/29.png" alt="图片四"><br>12、使用navicat工具新建连接<br><img src="/images/30.png" alt="图片四"><br>写条SQL查询一下，完美<br><img src="/images/31.png" alt="图片四"><br>13、最后记得在服务里改成手动<br><img src="/images/32.png" alt="图片四"></p>
 
       
     </div>
+    
+    
+    
 
+    <!--添加本文结束-->
+    <div>
+      
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/09/用Python找磁链/" rel="next" title="用Python找磁链">
+                <i class="fa fa-chevron-left"></i> 用Python找磁链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -366,6 +461,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -593,6 +692,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
