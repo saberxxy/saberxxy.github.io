@@ -364,240 +364,16 @@
       
         
           
-            <p><em>引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：<br>（1）基础包安装及前期准备<br>（2）安装Oracle软件<br>（3）安装监听<br>（4）安装ORCL实例</em></p>
-<p>&emsp;&emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linux环境都是不带有图形界面的，这时就要求oracle在命令行模式下进行安装。笔者综合网上的各类oracle静默安装的实例，经过实际安装操作（趟雷踩坑无数），得出了一种可行的静默安装的流程，仅供各位参考。该文章仅针对于oracle 11g R2版本的静默安装，即非图形界面的安装，安装流程如下：</p>
-<p><font color="#00EEEE">第零步：</font>配置hosts映射文件</p>
-<ul>
-<li>#vi /etc/hosts</li>
-<li>在其中加入“本机IP地址  本机主机名”的配置</li>
-</ul>
-<p><font color="#00EEEE">第一步：</font>检查软件安装包</p>
-<ul>
-<li>通过 rpm -qa | grep 包名的方式检查是否安装了对应的包，如果安装，会显示对应的包的版本号的，如果没有安装，则不会显示任何内容</li>
-<li>#rpm -qa | grep binutils</li>
-</ul>
-<p><img src="/images/45.png" alt="图片一"></p>
-<ul>
-<li>如果没有安装。通过yum install 包名 的方式进行安装对应的软件包。</li>
-<li>#yum install binutils</li>
-</ul>
-<p><img src="/images/46.png" alt="图片一"></p>
-<ul>
-<li>依次检查如下软件包</li>
-<li>binutils</li>
-<li>compat-libcap1</li>
-<li>compat-libstdc++-33</li>
-<li>elfutils-libelf</li>
-<li>elfutils-libelf-devel</li>
-<li>gcc</li>
-<li>gcc-c++</li>
-<li>glibc</li>
-<li>glibc-devel</li>
-<li>ksh</li>
-<li>libgcc</li>
-<li>libstdc++</li>
-<li>libaio</li>
-<li>libaio-devel</li>
-<li>make</li>
-<li>sysstat</li>
-<li>unixODBC</li>
-<li>unixODBC-devel</li>
-<li>#yum install binutils compat-libcap1 compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel gcc gcc-c++</li>
-<li>#yum install glibc glibc-devel ksh libgcc libstdc++ libaio libaio-devel make sysstat unixODBC unixODBC-devel</li>
-<li>以上环境是安装oracle必须具备的，若缺少某项环境，可能在安装过程中出现某些未知的错误。</li>
-</ul>
-<p><font color="#00EEEE">第二步：</font>修改kernel参数</p>
-<ul>
-<li>#vi /etc/sysctl.conf</li>
-<li>在底部添加如下内容</li>
-<li>net.ipv4.ip_local_port_range = 9000 65500</li>
-<li>fs.file-max = 6815744</li>
-<li>kernel.shmall = 10523004</li>
-<li>kernel.shmmax = 6465333657</li>
-<li>kernel.shmmni = 4096</li>
-<li>kernel.sem = 250 32000 100 128</li>
-<li>net.core.rmem_default=262144</li>
-<li>net.core.wmem_default=262144</li>
-<li>net.core.rmem_max=4194304</li>
-<li>net.core.wmem_max=1048576</li>
-<li>fs.aio-max-nr = 1048576</li>
-</ul>
-<p><img src="/images/47.png" alt="图片一"></p>
-<ul>
-<li>让内核参数生效</li>
-<li>#sysctl –p </li>
-<li>修改 linux 内核文件 sysctl  -P 报错</li>
-<li>error: “net.bridge.bridge-nf-call-ip6tables” is an unknown key</li>
-<li>error: “net.bridge.bridge-nf-call-iptables” is an unknown key</li>
-<li>error: “net.bridge.bridge-nf-call-arptables” is an unknown key</li>
-<li>解决方法如下：</li>
-<li>#modprobe bridge</li>
-<li>#lsmod|grep bridge</li>
-</ul>
-<p><font color="#00EEEE">第三步：</font>创建用户和相应的组</p>
-<ul>
-<li>#groupadd -g 200 oinstall</li>
-<li>#groupadd -g 201 dba</li>
-<li>#useradd -u 440 -g oinstall -G dba -d /home/oracle oracle</li>
-<li>#passwd oracle</li>
-</ul>
-<p><font color="#00EEEE">第四步：</font>修改登录系统参数</p>
-<ul>
-<li>#vi /etc/pam.d/login</li>
-<li>在底部添加:</li>
-<li>session required pam_limits.so</li>
-</ul>
-<p><img src="/images/48.png" alt="图片一"></p>
-<p><font color="#00EEEE">第五步：</font>修改操作系统安全限制等参数</p>
-<ul>
-<li>#vi /etc/security/limits.conf</li>
-<li>在文件底部添加</li>
-<li>oracle soft nproc 2047</li>
-<li>oracle hard nproc 16384</li>
-<li>oracle soft nofile 1024</li>
-<li>oracle hard nofile 65536</li>
-</ul>
-<p><img src="/images/49.png" alt="图片一"></p>
-<p><font color="#00EEEE">第六步：</font>修改环境变量文件</p>
-<ul>
-<li>#vi /etc/profile</li>
-<li>在文件末尾添加</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if [ $USER = &quot;oracle&quot; ]; then</span><br><span class="line">	if [ $SHELL = &quot;/bin/ksh&quot; ]; then</span><br><span class="line">		ulimit -p 16384</span><br><span class="line">		ulimit -n 65536</span><br><span class="line">	else</span><br><span class="line">		ulimit -u 16384 -n 65536</span><br><span class="line">	fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<p><img src="/images/50.png" alt="图片一"></p>
-<ul>
-<li>使环境变量生效</li>
-<li>source /etc/profile</li>
-</ul>
-<p><font color="#00EEEE">第七步：</font>创建用户目录并分配权限</p>
-<ul>
-<li>#mkdir /oracle</li>
-<li>对oracle目录进行授权</li>
-<li>#chmod 777 /oracle</li>
-<li>#chown -R oracle:oinstall /oracle</li>
-</ul>
-<p><img src="/images/51.png" alt="图片一"></p>
-<ul>
-<li>创建/etc/oraInst.loc文件</li>
-<li>vi /etc/oraInst.loc</li>
-<li>内容如下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inventory_loc=/oracle/oraInventory</span><br><span class="line">inst_group=oinstall</span><br></pre></td></tr></table></figure>
-<ul>
-<li>更改文件的权限</li>
-<li>#chown oracle:oinstall /etc/oraInst.loc</li>
-<li>#chmod 664 /etc/oraInst.loc</li>
-</ul>
-<p><font color="#00EEEE">第八步：</font>切换到oracle帐号。添加oracle用户下面的环境变量</p>
-<ul>
-<li>#su - oracle</li>
-<li>$vi ~/.bash_profile</li>
-</ul>
-<p><img src="/images/52.png" alt="图片一"></p>
-<ul>
-<li>在.base_profile里面添加如下内容</li>
-</ul>
-<p><img src="/images/53.png" alt="图片一"></p>
-<ul>
-<li>ORACLE_HOME在配置时注意后面不要带有:分隔符，否则PATH会取不到ORACLE_HOME的路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:$HOME/bin</span><br><span class="line">umask 022</span><br><span class="line">export PATH</span><br><span class="line">export ORACLE_BASE=/oracle</span><br><span class="line">export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1</span><br><span class="line">export ORACLE_SID=orcl</span><br><span class="line">export PATH=$PATH:$ORACLE_HOME/bin:</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使环境变量生效</li>
-<li>$source ~/.bash_profile</li>
-</ul>
-<p><font color="#00EEEE">第九步：</font>解压oracle</p>
-<ul>
-<li>切换回root用户</li>
-<li>首先安装zip和unzip工具</li>
-<li>#yum install zip unzip -y</li>
-<li>之后赋予执行权限</li>
-<li>#chmod +x linux.x64_11gR2_database_1of2.zip</li>
-<li>#chmod +x linux.x64_11gR2_database_2of2.zip</li>
-<li>然后解压</li>
-<li>#unzip linux.x64_11gR2_database_1of2.zip</li>
-<li>#unzip linux.x64_11gR2_database_2of2.zip</li>
-</ul>
-<p><img src="/images/54.png" alt="图片一"></p>
-<ul>
-<li>解压后。同一级目录中会生成一个database文件夹。</li>
-</ul>
-<p><font color="#00EEEE">第十步：</font>拷贝database/response/下面的dbca.rsp、db_install.rsp及netca.rsp三个文件至/home/oracle目录中</p>
-<ul>
-<li>#cp database/response/dbca.rsp /home/oracle/</li>
-<li>#cp database/response/db_install.rsp /home/oracle/</li>
-<li>#cp database/response/netca.rsp /home/oracle/</li>
-</ul>
-<p><img src="/images/55.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十步：</font>编辑db_install.rsp文件,</p>
-<ul>
-<li>#cd /home/oracle</li>
-<li>#vi db_install.rsp</li>
-<li>修改如下参数:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Oracle.install.option=INSTALL_DB_SWONLY</span><br><span class="line">ORACLE_HOSTNAME=oracle.server  #主机名称（命令hostname查询，事先在/etc/hosts文件里）</span><br><span class="line">UNIX_GROUP_NAME=oinstall</span><br><span class="line">INVENTORY_LOCATION=/oracle/oraInventory</span><br><span class="line">SELECTED_LANGUAGES=en,zh_CN</span><br><span class="line">ORACLE_HOME=/oracle/product/11.2.0/dbhome_1</span><br><span class="line">ORACLE_BASE=/oracle</span><br><span class="line">Oracle.install.db.InstallEdition=EE</span><br><span class="line">Oracle.install.db.DBA_GROUP=dba</span><br><span class="line">Oracle.install.db.OPER_GROUP=oinstall</span><br><span class="line">Oracle.install.db.config.starterdb.type=GENERAL_PURPOSE</span><br><span class="line">Oracle.install.db.config.starterdb.globalDBName=orcl</span><br><span class="line">Oracle.install.db.config.starterdb.SID=orcl</span><br><span class="line">Oracle.install.db.config.starterdb.characterSet=ZHS16GBK</span><br><span class="line">Oracle.install.db.config.starterdb.password.ALL=123456</span><br><span class="line">DECLINE_SECURITY_UPDATES=true</span><br></pre></td></tr></table></figure>
-<p><img src="/images/56.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十一步：</font>切换至oracle 帐号，创建oraInventory目录。</p>
-<ul>
-<li>#su - oracle</li>
-<li>新建oraInventory文件夹</li>
-<li>$mkdir /oracle/oraInventory</li>
-<li>切换至oracle安装文件根目录中</li>
-<li>$cd /opt/database(我的安装文件根目录在/opt/database)</li>
-</ul>
-<p><font color="#00EEEE">第十二步：</font>开始执行安装操作<br>$./runInstaller -silent -ignorePrereq -responseFile /home/oracle/db_install.rsp</p>
-<p><img src="/images/57.png" alt="图片一"></p>
-<ul>
-<li>然后进/oracle/oraInventory/logs/查看对应的安装日志文件</li>
-<li>#tail –f –n 2000 后面加上日志的路径和名称</li>
-</ul>
-<p><img src="/images/58.png" alt="图片一"><br><img src="/images/59.png" alt="图片一"></p>
-<ul>
-<li>安装过程比较漫长，请耐心等待。另外，请虔诚的祈祷！</li>
-<li>遇到如下提示时，执行以下操作：</li>
-<li>切换至root帐号，执行两个脚本命令</li>
-</ul>
-<p><img src="/images/60.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十三步：</font>新开一个客户端，root帐号下面执行orainstRoot.sh及root.sh两脚本。</p>
-<ul>
-<li>（也有可能只需要执行root.sh这一个脚本，总之没事）</li>
-<li>#cd /oracle/oraInventory</li>
-<li>#sh orainstRoot.sh</li>
-</ul>
-<p><img src="/images/61.png" alt="图片一"></p>
-<ul>
-<li>#cd /oracle/product/11.2.0/dbhome_1</li>
-<li>#sh root.sh</li>
-</ul>
-<p><img src="/images/62.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十四步：</font>安装监听,直接执行监听脚本</p>
-<ul>
-<li>切换至oracle用户</li>
-<li>$netca /silent /responseFile /home/oracle/netca.rsp(lsnrctl status, lsnrctl start, lsnrctl stop)</li>
-</ul>
-<p><img src="/images/63.png" alt="图片一"></p>
-<ul>
-<li>记录备注：(启动实例：输入startup，回车.这步是启动oracle服务。如果startup启动被告知已经启动了，可以先输入shutdown immediate；等shutdown结束之后，再输入startup。)</li>
-</ul>
-<p><font color="#00EEEE">第十五步：</font>安装实例</p>
-<ul>
-<li>#vi /home/oracle/dbca.rsp</li>
-<li>修改以下配置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GDBNAME=orcl</span><br><span class="line">SID=orcl</span><br><span class="line">DATAFILEDESTINATION=/oracle/oradata</span><br><span class="line">RECOVERYAREADESTINATION=/oracle/flash_recovery_area</span><br><span class="line">CHARACTERSET=ZHS16GBK</span><br><span class="line">AUTOMATICMEMORYMANAGEMENT=true</span><br></pre></td></tr></table></figure>
-<p><img src="/images/64.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十六步：</font>静默模式建实例</p>
-<ul>
-<li>（此命令不能在Xshell工具中执行，会出现蜜汁bug）</li>
-<li>$dbca -silent -responseFile /home/oracle/dbca.rsp</li>
-</ul>
-<p><img src="/images/65.png" alt="图片一"></p>
-<p><font color="#00EEEE">第十七步：</font>测试oracle</p>
-<ul>
-<li>$sqlplus / as sysdba</li>
-</ul>
-
-          
+          引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：（1）基础包安装及前期准备（2）安装Oracle软件（3）安装监听（4）安装ORCL实例
+&emsp;&emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linu
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/24/Linux静默模式安装oracle11g/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -744,51 +520,31 @@
       
         
           
-            <p><em>春和日暖，天清地明，遂游恭王府。其间睹物怀古，于楼阁馆榭之间颇多感怀，故作诗六首，以滋纪念。</em><br><br></p>
-<blockquote>
-<p><strong>游恭王府怀和中堂 其一</strong></p>
-<blockquote>
-<p>咸安少年本多情，<br>御驾车旁执槊金。<br>虎兕龟玉谁人过，<br>十笏园中梦初惊。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/38.png" alt="图片一"></p>
-<blockquote>
-<p><strong>游恭王府怀和中堂 其二</strong></p>
-<blockquote>
-<p>朱墙碧瓦落凡尘，<br>昔日王公已没身。<br>绿树芳草丹青在，<br>含龙水泛梦成真。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/39.png" alt="图片一"></p>
-<blockquote>
-<p><strong>游恭王府怀议政王 其一</strong></p>
-<blockquote>
-<p>跃马挥枪最盛年，<br>太息一场锁珠帘。<br>乐道堂下蹉跎日，<br>定策灭贼起烽烟。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/40.png" alt="图片一"></p>
-<blockquote>
-<p><strong>游恭王府怀议政王 其二</strong></p>
-<blockquote>
-<p>生逢乱世帝王家，<br>往日功过随尘沙。<br>十载洋务空余恨，<br>文章千古铸锦华。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/41.png" alt="图片一"></p>
-<blockquote>
-<p><strong>游恭王府观景有感 其一</strong></p>
-<blockquote>
-<p>万寿福源春韵暖，<br>樵香花径意禅廛。<br>太古清虚撷秀月，<br>独乐垂花听雨轩。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/42.png" alt="图片一"></p>
-<blockquote>
-<p><strong>游恭王府观景有感 其二</strong></p>
-<blockquote>
-<p>碧水寒鸭渡鹤桥，<br>戏楼听鼓画舟摇。<br>方塘水榭邀明月，<br>澄怀天香品洞箫。</p>
-</blockquote>
-</blockquote>
-<p><img src="/images/43.png" alt="图片一"><br><img src="/images/44.png" alt="图片一"></p>
+          春和日暖，天清地明，遂游恭王府。其间睹物怀古，于楼阁馆榭之间颇多感怀，故作诗六首，以滋纪念。
 
-          
+游恭王府怀和中堂 其一
+
+咸安少年本多情，御驾车旁执槊金。虎兕龟玉谁人过，十笏园中梦初惊。
+
+
+
+
+游恭王府怀和中堂 其二
+
+朱墙碧瓦落凡尘，昔日王公已没身。绿树芳草丹青在，含龙水泛梦成真。
+
+
+
+
+游恭
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/24/清明游恭王府/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -935,18 +691,17 @@
       
         
           
-            <p><em>Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。</em><br><br><br>1、上万能的GitHub，找到微软开发的Windows版Redis，<a href="https://github.com/MSOpenTech/redis/releases" target="_blank" rel="noopener">传送门</a><br><img src="/images/33.png" alt="图片一"></p>
-<p>2、为了安装方便，直接选择下载第一个。</p>
-<p>3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下一步”。<br><img src="/images/34.png" alt="图片一"></p>
-<p>4、打开cmd窗口，测试运行一下，使用命令【redis-server.exe redis.windows.conf】，启动redis 服务。然后发现报了个错，如下<br><img src="/images/35.png" alt="图片一"></p>
-<p>5、解决方案就是按照如下顺序输入命令</p>
-<blockquote>
-<p>redis-cli.exe<br>shutdown<br>exit<br>redis-server.exe redis.windows.conf</p>
-</blockquote>
-<p>然后启动成功<br><img src="/images/36.png" alt="图片一"></p>
-<p>6、另起一个窗口，测试一下，成功<br><img src="/images/37.png" alt="图片一"></p>
-
-          
+          Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。1、上万能的GitHub，找到微软开发的Windows版Redis，传送门
+2、为了安装方便，直接选择下载第一个。
+3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/23/Windows下安装Redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1093,9 +848,15 @@
       
         
           
-            <p><em>Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。</em><br>1、安装部分略去，直接从初始化开始<br>2、将安装的文件路径一律去掉空格<br><img src="/images/18.png" alt="图片四"><br>3、根目录下新建data文件夹<br>4、根目录下新建my.ini，内容如图<br><img src="/images/19.png" alt="图片四"><br>5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下，执行命令。这一步的内容就意味着MySQL数据库按照my.ini的设定进行初始化<br><img src="/images/20.png" alt="图片四"><br>6、进行下一步的安装，安装成功<br><img src="/images/21.png" alt="图片四"><br>7、启动MySQL服务，这里会卡住，没有任何信息，只要不报错就代表启动成功<br><img src="/images/22.png" alt="图片四"><br>8、另开一个窗口测试是否成功，发现可以登录成功，写条SQL测试一下，发现没有问题<br><img src="/images/23.png" alt="图片四"><br><img src="/images/24.png" alt="图片四"><br>9、修改root密码，让root用户必须使用密码才能登录<br><img src="/images/25.png" alt="图片四"><br>10、配置环境变量，配置之前，先用密码登录一下，看看情况，如果能成功则进行配置<br><img src="/images/26.png" alt="图片四"><br><img src="/images/27.png" alt="图片四"><br>win10是列表编辑的形式，配置比较简单，win7要注意分号<br><img src="/images/28.png" alt="图片四"><br>11、保存退出过后，验证一下<br><img src="/images/29.png" alt="图片四"><br>12、使用navicat工具新建连接<br><img src="/images/30.png" alt="图片四"><br>写条SQL查询一下，完美<br><img src="/images/31.png" alt="图片四"><br>13、最后记得在服务里改成手动<br><img src="/images/32.png" alt="图片四"></p>
-
-          
+          Windows下安装MySQL是一个相对简单的过程，因此安装部分略过，直接开始配置部分。1、安装部分略去，直接从初始化开始2、将安装的文件路径一律去掉空格3、根目录下新建data文件夹4、根目录下新建my.ini，内容如图5、管理员身份打开cmd，切换到MySQL的安装目录下，继续切换到bin目录下
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/09/Windows安装并配置MySQL/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1242,9 +1003,16 @@
       
         
           
-            <p><em>我知道你想下片，但网上查的严，又找不到磁链，怎么办呢？</em><br>1、求助于万能的Python，一行命令先安装<br><img src="/images/15.png" alt="图片一"><br>2、怎么用呢？<br><img src="/images/16.png" alt="图片二"><br>3、具体示例<br><img src="/images/17.png" alt="图片三"><br>4、Have Fun！</p>
+          我知道你想下片，但网上查的严，又找不到磁链，怎么办呢？1、求助于万能的Python，一行命令先安装2、怎么用呢？3、具体示例4、Have Fun！
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/09/用Python找磁链/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1391,13 +1159,17 @@
       
         
           
-            <p><em>用Python做Quant，分析基金数据，首先需要一个包talib</em><br><em>下面介绍一下安装方法（期间也是采坑无数）</em><br>1、安装ta-lib，结果发现报错</p>
-<blockquote>
-<p>C:\Users\Administrator&gt;pip install ta-lib<br>Collecting ta-lib<br>  Downloading TA-Lib-0.4.16.tar.gz (715kB)<br>    100% |████████████████████████████████| 716kB 8.6kB/s<br>Requirement already satisfied: numpy in f:\anaconda3\lib\site-packages (from ta-lib)<br>Building wheels for collected packages: ta-lib<br>  Running setup.py bdist_wheel for ta-lib … error<br>  Complete output from command F:\Anaconda3\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\setup.py’;f=getattr(tokenize, ‘open’, open)(<strong>file</strong>);code=f.read().replace(‘\r\n’, ‘\n’);f.close();exec(compile(code, <strong>file</strong>, ‘exec’))” bdist_wheel -d C:\Users\ADMINI~1\AppData\Local\Temp\tmpt1xd3k9xpip-wheel- –python-tag cp36:<br>  C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\setup.py:82: UserWarning: Cannot find ta-lib library, installation may fail.<br>    warnings.warn(‘Cannot find ta-lib library, installation may fail.’)<br>  running bdist_wheel<br>  running build<br>  running build_py<br>  creating build<br>  creating build\lib.win-amd64-3.6<br>  creating build\lib.win-amd64-3.6\talib<br>  copying talib\abstract.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\deprecated.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\stream.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\test_abstract.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\test_data.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\test_func.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\test_stream.py -&gt; build\lib.win-amd64-3.6\talib<br>  copying talib\<strong>init</strong>.py -&gt; build\lib.win-amd64-3.6\talib<br>  running build_ext<br>  skipping ‘talib\_ta_lib.c’ Cython extension (up-to-date)<br>  building ‘talib._ta_lib’ extension<br>  creating build\temp.win-amd64-3.6<br>  creating build\temp.win-amd64-3.6\Release<br>  creating build\temp.win-amd64-3.6\Release\talib<br>  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IF:\Anaconda3\lib\site-packages\numpy\core\include -Ic:\ta-lib\c\include -IF:\Anaconda3\include -IF:\Anaconda3\include “-IC:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE” “-IC:\Program Files (x86)\Windows Kits\10\include\10.0.10240.0\ucrt” “-IC:\Program Files (x86)\Windows Kits\8.1\include\shared” “-IC:\Program Files (x86)\Windows Kits\8.1\include\um” “-IC:\Program Files (x86)\Windows Kits\8.1\include\winrt” /Tctalib\_ta_lib.c /Fobuild\temp.win-amd64-3.6\Release\talib_ta_lib.obj<br>  _ta_lib.c<br>  talib\_ta_lib.c(524): fatal error C1083: Cannot open include file: ‘ta_libc.h’: No such file or directory<br>  error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\cl.exe’ failed with exit status 2<br> Failed building wheel for ta-lib<br>  Running setup.py clean for ta-lib<br>Failed to build ta-lib<br>Installing collected packages: ta-lib<br>  Running setup.py install for ta-lib … error<br>    Complete output from command F:\Anaconda3\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\setup.py’;f=getattr(tokenize, ‘open’, open)(<strong>file</strong>);code=f.read().replace(‘\r\n’, ‘\n’);f.close();exec(compile(code, <strong>file</strong>, ‘exec’))” install –record C:\Users\ADMINI~1\AppData\Local\Temp\pip-2p9yalgy-record\install-record.txt –single-version-externally-managed –compile:<br>    C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\setup.py:82: UserWarning: Cannot find ta-lib library, installation may fail.<br>      warnings.warn(‘Cannot find ta-lib library, installation may fail.’)<br>    running install<br>    running build<br>    running build_p<br>    creating build<br>    creating build\lib.win-amd64-3.6<br>    creating build\lib.win-amd64-3.6\talib<br>    copying talib\abstract.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\deprecated.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\stream.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\test_abstract.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\test_data.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\test_func.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\test_stream.py -&gt; build\lib.win-amd64-3.6\talib<br>    copying talib\<strong>init</strong>.py -&gt; build\lib.win-amd64-3.6\talib<br>    running build_ext<br>    skipping ‘talib\_ta_lib.c’ Cython extension (up-to-date)<br>    building ‘talib._ta_lib’ extension<br>    creating build\temp.win-amd64-3.6<br>    creating build\temp.win-amd64-3.6\Release<br>    creating build\temp.win-amd64-3.6\Release\talib<br>    C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\cl.exe /c /nologo /Ox /W3 /GL /DNDEBUG /MD -IF:\Anaconda3\lib\site-packages\numpy\core\include -Ic:\ta-lib\c\include -IF:\Anaconda3\include -IF:\Anaconda3\include “-IC:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE” “-IC:\Program Files (x86)\Windows Kits\10\include\10.0.10240.0\ucrt” “-IC:\Program Files (x86)\Windows Kits\8.1\include\shared” “-IC:\Program Files (x86)\Windows Kits\8.1\include\um” “-IC:\Program Files (x86)\Windows Kits\8.1\include\winrt” /Tctalib\_ta_lib.c /Fobuild\temp.win-amd64-3.6\Release\talib\_ta_lib.obj<br>    _ta_lib.c<br>    talib\_ta_lib.c(524): fatal error C1083: Cannot open include file: ‘ta_libc.h’: No such file or directory<br>    error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\cl.exe’ failed with exit status 2<br>Command “F:\Anaconda3\python.exe -u -c “import setuptools, tokenize;<strong>file</strong>=’C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\setup.py’;f=getattr(tokenize, ‘open’, open)(<strong>file</strong>);code=f.read().replace(‘\r\n’, ‘\n’);f.close();exec(compile(code, <strong>file</strong>, ‘exec’))” install –record C:\Users\ADMINI~1\AppData\Local\Temp\pip-2p9yalgy-record\install-record.txt –single-version-externally-managed –compile” failed with error code 1 in C:\Users\ADMINI~1\AppData\Local\Temp\pip-build-0upz9d8s\ta-lib\ </p>
-<p><font color="red"><strong>遇到这个报错不要惊慌，pip解决不了的问题，还有很多办法</strong></font><br>2、从这里选择合适的版本进行下载，<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib" target="_blank" rel="noopener">https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib</a><br><img src="/images/9.png" alt="图片一"><br>3、下载好之后，切换到文件夹内，重新打包，安装成功<br><img src="/images/10.png" alt="图片二"><br>4、import talib一下，依旧有问题，这是为什么？<br><img src="/images/11.png" alt="图片三"><br>5、重开一个cmd窗口，再次导入，报错居然变了？更加奇怪了。<br><img src="/images/12.png" alt="图片四"><br>6、观察报错信息，发现是numpy的问题，之前安装TensorFlow的时候好像也遇到过这个问题，于是升级numpy，命令conda update numpy<br><img src="/images/13.png" alt="图片五"><br>再次import，完美成功<br><img src="/images/14.png" alt="图片六"></p>
-</blockquote>
+          用Python做Quant，分析基金数据，首先需要一个包talib下面介绍一下安装方法（期间也是采坑无数）1、安装ta-lib，结果发现报错
 
-          
+C:\Users\Administrator&gt;pip install ta-libCollecting ta-lib  Downloading TA-
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/03/安装talib/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1544,10 +1316,15 @@
       
         
           
-            <p>1、由于最近定投了040035，所以想分析一下，于是找到了这只基金的净值数据<br><a href="http://jingzhi.funds.hexun.com/DataBase/jzzs.aspx?fundcode=040035" target="_blank" rel="noopener">http://jingzhi.funds.hexun.com/DataBase/jzzs.aspx?fundcode=040035</a><br><img src="/images/8.png" alt="图片一"><br>2、f12分析了一下页面，获取到一个api，可以直接调用获取数据，xml格式<br><a href="http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode=040035&amp;startdate=2008-10-31&amp;enddate=2018-01-31" target="_blank" rel="noopener">http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode=040035&amp;startdate=2008-10-31&amp;enddate=2018-01-31</a><br>3、源码链接如下：<a href="https://github.com/saberxxy/Python-Quant/commit/d049a08457dc78d55a4aa24fa86a77712ab2b518" target="_blank" rel="noopener">https://github.com/saberxxy/Python-Quant/commit/d049a08457dc78d55a4aa24fa86a77712ab2b518</a><br>运行代码需要用到phantomjs，可以在官网下载</p>
-<p><em>关于分析的内容，请查看下一篇博客</em></p>
-
-          
+          1、由于最近定投了040035，所以想分析一下，于是找到了这只基金的净值数据http://jingzhi.funds.hexun.com/DataBase/jzzs.aspx?fundcode=0400352、f12分析了一下页面，获取到一个api，可以直接调用获取数据，xml格式http://da
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/01/Python爬虫获取基金数据/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1694,34 +1471,17 @@
       
         
           
-            <p><em>昨天往博客上搬了个程序员老黄历，原地址如下：</em><br><em><a href="http://www.widuu.com/date/index.html" target="_blank" rel="noopener">http://www.widuu.com/date/index.html</a></em></p>
-<p>博客的页面如下：<br><img src="/images/6.png" alt="图片一"><br>然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。<br>于是乎看了配置文件，解决了问题。</p>
-<p>在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。<br><img src="/images/7.png" alt="图片二"></p>
-<ol>
-<li>跳过单个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过多个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”<br>- “CNAME”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过某一类文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “*.html”</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-
-          
+          昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html
+博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。
+在hexo的_config.yml配置文件中，有这么一项配置，只
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/30/hexo设置指定不渲染的页面/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1868,9 +1628,15 @@
       
         
           
-            <p><em>有必要写篇博客记录一下从买域名到建站成功之中的事情（坑）。因为很早就开通了GitHub</em><br><em>所以和GitHub开通、免密钥登录之类的就不再记载了</em><br>1、万网购买域名，一年55，不贵<br>2、进入GitHub建立项目，红色部分名字相同，为GitHub用户名，标黄部分固定写法<br><img src="/images/1.png" alt="图片一"><br>3、选择模板，提交项目<br>4、访问地址<a href="http://saberxxy.github.io，测试页面可以出现" target="_blank" rel="noopener">http://saberxxy.github.io，测试页面可以出现</a><br>5、进入万网添加域名解析，使购买的域名解析指向GitHub的服务器，黄线部分为GitHub地址<br><img src="/images/2.png" alt="图片二"><br>6、进入GitHub项目，添加解析文件，文件内容一行字，即为购买的域名<br><img src="/images/3.png" alt="图片三"><br>7、访问<a href="http://www.xuexinyu.com">http://www.xuexinyu.com</a>，发现已经指向了GitHub托管的博客。如果没有，则需要等待，一般一个小时左右即可。<br>8、使用hexo，具体方法参见该链接<a href="https://www.cnblogs.com/fengxiongZz/p/7707219.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengxiongZz/p/7707219.html</a><br>如果npm下载慢的话，则安装cnpm，用淘宝源，然后再安装诸多依赖文件<br><a href="http://blog.csdn.net/quuqu/article/details/64121812" target="_blank" rel="noopener">http://blog.csdn.net/quuqu/article/details/64121812</a><br>9、干掉GitHub上原项目的内容后，一定要记得加CNAME文件，否则域名无法指向那个项目。这个文件是重中之重，项目化成灰也不能忘记加，要不然链接就404了<br><img src="/images/4.png" alt="图片四"><br>10、hexo s，启动本地服务，hexo d -g，项目部署。每次修改都先在本地做测试，测试无误之后再发布，否则404了不好收场<br>11、建立新页面 hexo new post “博客名”，建好的博客在_posts目录下，编辑的话直接使用Sublime就很好，因为编辑的是页面，所以不用每次都重启，直接刷新即可，若刷新没有效果可尝试Ctrl+f5刷新<br><img src="/images/5.png" alt="图片五"></p>
-
-          
+          有必要写篇博客记录一下从买域名到建站成功之中的事情（坑）。因为很早就开通了GitHub所以和GitHub开通、免密钥登录之类的就不再记载了1、万网购买域名，一年55，不贵2、进入GitHub建立项目，红色部分名字相同，为GitHub用户名，标黄部分固定写法3、选择模板，提交项目4、访问地址http:
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/28/从买域名到博客发布，中间遇到的坑和趟过的雷/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2017,9 +1783,16 @@
       
         
           
-            <p>使用Hexo搭建测试博客</p>
+          使用Hexo搭建测试博客
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/27/第一个Hexo博客测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
