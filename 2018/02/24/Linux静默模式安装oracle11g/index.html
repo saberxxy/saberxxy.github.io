@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Oracle,数据库,Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：（1）基础包安装及前期准备（2）安装Oracle软件（3）安装监听（4）安装ORCL实例 &amp;emsp;&amp;emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linux环境都是不带有图形界面的，这时就要求oracle在命令行模式下进行安装。笔者综合网上的各类orac">
+<meta name="keywords" content="Oracle,数据库,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux静默模式安装oracle11g">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/Linux静默模式安装oracle11g/index.html">
+<meta property="og:site_name" content="东皇">
+<meta property="og:description" content="引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：（1）基础包安装及前期准备（2）安装Oracle软件（3）安装监听（4）安装ORCL实例 &amp;emsp;&amp;emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linux环境都是不带有图形界面的，这时就要求oracle在命令行模式下进行安装。笔者综合网上的各类orac">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/45.png">
+<meta property="og:image" content="http://yoursite.com/images/46.png">
+<meta property="og:image" content="http://yoursite.com/images/47.png">
+<meta property="og:image" content="http://yoursite.com/images/48.png">
+<meta property="og:image" content="http://yoursite.com/images/49.png">
+<meta property="og:image" content="http://yoursite.com/images/50.png">
+<meta property="og:image" content="http://yoursite.com/images/51.png">
+<meta property="og:image" content="http://yoursite.com/images/52.png">
+<meta property="og:image" content="http://yoursite.com/images/53.png">
+<meta property="og:image" content="http://yoursite.com/images/54.png">
+<meta property="og:image" content="http://yoursite.com/images/55.png">
+<meta property="og:image" content="http://yoursite.com/images/56.png">
+<meta property="og:image" content="http://yoursite.com/images/57.png">
+<meta property="og:image" content="http://yoursite.com/images/58.png">
+<meta property="og:image" content="http://yoursite.com/images/59.png">
+<meta property="og:image" content="http://yoursite.com/images/60.png">
+<meta property="og:image" content="http://yoursite.com/images/61.png">
+<meta property="og:image" content="http://yoursite.com/images/62.png">
+<meta property="og:image" content="http://yoursite.com/images/63.png">
+<meta property="og:image" content="http://yoursite.com/images/64.png">
+<meta property="og:image" content="http://yoursite.com/images/65.png">
+<meta property="og:updated_time" content="2018-02-25T02:13:41.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux静默模式安装oracle11g">
+<meta name="twitter:description" content="引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：（1）基础包安装及前期准备（2）安装Oracle软件（3）安装监听（4）安装ORCL实例 &amp;emsp;&amp;emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linux环境都是不带有图形界面的，这时就要求oracle在命令行模式下进行安装。笔者综合网上的各类orac">
+<meta name="twitter:image" content="http://yoursite.com/images/45.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/24/Linux静默模式安装oracle11g/"/>
+
+
+
+
+
+  <title>Linux静默模式安装oracle11g | 东皇</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/saberxxy"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png" target="_blank"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">东皇</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/mypages/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-coder">
+          <a href="/mypages/coder.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            程序员老黄历
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/Linux静默模式安装oracle11g/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Albert Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yanmoai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东皇">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux静默模式安装oracle11g</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T22:06:17+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">Oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>引言：在本文详细描述在Linux操作系统中安装Oracle11g数据库，主要分为以下四步：<br>（1）基础包安装及前期准备<br>（2）安装Oracle软件<br>（3）安装监听<br>（4）安装ORCL实例</em></p>
+<p>&emsp;&emsp;很多时候，oracle是安装在服务器上的Linux环境下。因为服务器的特殊性，一般安装的Linux环境都是不带有图形界面的，这时就要求oracle在命令行模式下进行安装。笔者综合网上的各类oracle静默安装的实例，经过实际安装操作（趟雷踩坑无数），得出了一种可行的静默安装的流程，仅供各位参考。该文章仅针对于oracle 11g R2版本的静默安装，即非图形界面的安装，安装流程如下：</p>
+<p><font color="#00EEEE">第零步：</font>配置hosts映射文件</p>
+<ul>
+<li>#vi /etc/hosts</li>
+<li>在其中加入“本机IP地址  本机主机名”的配置</li>
+</ul>
+<p><font color="#00EEEE">第一步：</font>检查软件安装包</p>
+<ul>
+<li>通过 rpm -qa | grep 包名的方式检查是否安装了对应的包，如果安装，会显示对应的包的版本号的，如果没有安装，则不会显示任何内容</li>
+<li>#rpm -qa | grep binutils</li>
+</ul>
+<p><img src="/images/45.png" alt="图片一"></p>
+<ul>
+<li>如果没有安装。通过yum install 包名 的方式进行安装对应的软件包。</li>
+<li>#yum install binutils</li>
+</ul>
+<p><img src="/images/46.png" alt="图片一"></p>
+<ul>
+<li>依次检查如下软件包</li>
+<li>binutils</li>
+<li>compat-libcap1</li>
+<li>compat-libstdc++-33</li>
+<li>elfutils-libelf</li>
+<li>elfutils-libelf-devel</li>
+<li>gcc</li>
+<li>gcc-c++</li>
+<li>glibc</li>
+<li>glibc-devel</li>
+<li>ksh</li>
+<li>libgcc</li>
+<li>libstdc++</li>
+<li>libaio</li>
+<li>libaio-devel</li>
+<li>make</li>
+<li>sysstat</li>
+<li>unixODBC</li>
+<li>unixODBC-devel</li>
+<li>#yum install binutils compat-libcap1 compat-libstdc++-33 elfutils-libelf elfutils-libelf-devel gcc gcc-c++</li>
+<li>#yum install glibc glibc-devel ksh libgcc libstdc++ libaio libaio-devel make sysstat unixODBC unixODBC-devel</li>
+<li>以上环境是安装oracle必须具备的，若缺少某项环境，可能在安装过程中出现某些未知的错误。</li>
+</ul>
+<p><font color="#00EEEE">第二步：</font>修改kernel参数</p>
+<ul>
+<li>#vi /etc/sysctl.conf</li>
+<li>在底部添加如下内容</li>
+<li>net.ipv4.ip_local_port_range = 9000 65500</li>
+<li>fs.file-max = 6815744</li>
+<li>kernel.shmall = 10523004</li>
+<li>kernel.shmmax = 6465333657</li>
+<li>kernel.shmmni = 4096</li>
+<li>kernel.sem = 250 32000 100 128</li>
+<li>net.core.rmem_default=262144</li>
+<li>net.core.wmem_default=262144</li>
+<li>net.core.rmem_max=4194304</li>
+<li>net.core.wmem_max=1048576</li>
+<li>fs.aio-max-nr = 1048576</li>
+</ul>
+<p><img src="/images/47.png" alt="图片一"></p>
+<ul>
+<li>让内核参数生效</li>
+<li>#sysctl –p </li>
+<li>修改 linux 内核文件 sysctl  -P 报错</li>
+<li>error: “net.bridge.bridge-nf-call-ip6tables” is an unknown key</li>
+<li>error: “net.bridge.bridge-nf-call-iptables” is an unknown key</li>
+<li>error: “net.bridge.bridge-nf-call-arptables” is an unknown key</li>
+<li>解决方法如下：</li>
+<li>#modprobe bridge</li>
+<li>#lsmod|grep bridge</li>
+</ul>
+<p><font color="#00EEEE">第三步：</font>创建用户和相应的组</p>
+<ul>
+<li>#groupadd -g 200 oinstall</li>
+<li>#groupadd -g 201 dba</li>
+<li>#useradd -u 440 -g oinstall -G dba -d /home/oracle oracle</li>
+<li>#passwd oracle</li>
+</ul>
+<p><font color="#00EEEE">第四步：</font>修改登录系统参数</p>
+<ul>
+<li>#vi /etc/pam.d/login</li>
+<li>在底部添加:</li>
+<li>session required pam_limits.so</li>
+</ul>
+<p><img src="/images/48.png" alt="图片一"></p>
+<p><font color="#00EEEE">第五步：</font>修改操作系统安全限制等参数</p>
+<ul>
+<li>#vi /etc/security/limits.conf</li>
+<li>在文件底部添加</li>
+<li>oracle soft nproc 2047</li>
+<li>oracle hard nproc 16384</li>
+<li>oracle soft nofile 1024</li>
+<li>oracle hard nofile 65536</li>
+</ul>
+<p><img src="/images/49.png" alt="图片一"></p>
+<p><font color="#00EEEE">第六步：</font>修改环境变量文件</p>
+<ul>
+<li>#vi /etc/profile</li>
+<li>在文件末尾添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if [ $USER = &quot;oracle&quot; ]; then</span><br><span class="line">	if [ $SHELL = &quot;/bin/ksh&quot; ]; then</span><br><span class="line">		ulimit -p 16384</span><br><span class="line">		ulimit -n 65536</span><br><span class="line">	else</span><br><span class="line">		ulimit -u 16384 -n 65536</span><br><span class="line">	fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><img src="/images/50.png" alt="图片一"></p>
+<ul>
+<li>使环境变量生效</li>
+<li>source /etc/profile</li>
+</ul>
+<p><font color="#00EEEE">第七步：</font>创建用户目录并分配权限</p>
+<ul>
+<li>#mkdir /oracle</li>
+<li>对oracle目录进行授权</li>
+<li>#chmod 777 /oracle</li>
+<li>#chown -R oracle:oinstall /oracle</li>
+</ul>
+<p><img src="/images/51.png" alt="图片一"></p>
+<ul>
+<li>创建/etc/oraInst.loc文件</li>
+<li>vi /etc/oraInst.loc</li>
+<li>内容如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inventory_loc=/oracle/oraInventory</span><br><span class="line">inst_group=oinstall</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改文件的权限</li>
+<li>#chown oracle:oinstall /etc/oraInst.loc</li>
+<li>#chmod 664 /etc/oraInst.loc</li>
+</ul>
+<p><font color="#00EEEE">第八步：</font>切换到oracle帐号。添加oracle用户下面的环境变量</p>
+<ul>
+<li>#su - oracle</li>
+<li>$vi ~/.bash_profile</li>
+</ul>
+<p><img src="/images/52.png" alt="图片一"></p>
+<ul>
+<li>在.base_profile里面添加如下内容</li>
+</ul>
+<p><img src="/images/53.png" alt="图片一"></p>
+<ul>
+<li>ORACLE_HOME在配置时注意后面不要带有:分隔符，否则PATH会取不到ORACLE_HOME的路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:$HOME/bin</span><br><span class="line">umask 022</span><br><span class="line">export PATH</span><br><span class="line">export ORACLE_BASE=/oracle</span><br><span class="line">export ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1</span><br><span class="line">export ORACLE_SID=orcl</span><br><span class="line">export PATH=$PATH:$ORACLE_HOME/bin:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使环境变量生效</li>
+<li>$source ~/.bash_profile</li>
+</ul>
+<p><font color="#00EEEE">第九步：</font>解压oracle</p>
+<ul>
+<li>切换回root用户</li>
+<li>首先安装zip和unzip工具</li>
+<li>#yum install zip unzip -y</li>
+<li>之后赋予执行权限</li>
+<li>#chmod +x linux.x64_11gR2_database_1of2.zip</li>
+<li>#chmod +x linux.x64_11gR2_database_2of2.zip</li>
+<li>然后解压</li>
+<li>#unzip linux.x64_11gR2_database_1of2.zip</li>
+<li>#unzip linux.x64_11gR2_database_2of2.zip</li>
+</ul>
+<p><img src="/images/54.png" alt="图片一"></p>
+<ul>
+<li>解压后。同一级目录中会生成一个database文件夹。</li>
+</ul>
+<p><font color="#00EEEE">第十步：</font>拷贝database/response/下面的dbca.rsp、db_install.rsp及netca.rsp三个文件至/home/oracle目录中</p>
+<ul>
+<li>#cp database/response/dbca.rsp /home/oracle/</li>
+<li>#cp database/response/db_install.rsp /home/oracle/</li>
+<li>#cp database/response/netca.rsp /home/oracle/</li>
+</ul>
+<p><img src="/images/55.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十步：</font>编辑db_install.rsp文件,</p>
+<ul>
+<li>#cd /home/oracle</li>
+<li>#vi db_install.rsp</li>
+<li>修改如下参数:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Oracle.install.option=INSTALL_DB_SWONLY</span><br><span class="line">ORACLE_HOSTNAME=oracle.server  #主机名称（命令hostname查询，事先在/etc/hosts文件里）</span><br><span class="line">UNIX_GROUP_NAME=oinstall</span><br><span class="line">INVENTORY_LOCATION=/oracle/oraInventory</span><br><span class="line">SELECTED_LANGUAGES=en,zh_CN</span><br><span class="line">ORACLE_HOME=/oracle/product/11.2.0/dbhome_1</span><br><span class="line">ORACLE_BASE=/oracle</span><br><span class="line">Oracle.install.db.InstallEdition=EE</span><br><span class="line">Oracle.install.db.DBA_GROUP=dba</span><br><span class="line">Oracle.install.db.OPER_GROUP=oinstall</span><br><span class="line">Oracle.install.db.config.starterdb.type=GENERAL_PURPOSE</span><br><span class="line">Oracle.install.db.config.starterdb.globalDBName=orcl</span><br><span class="line">Oracle.install.db.config.starterdb.SID=orcl</span><br><span class="line">Oracle.install.db.config.starterdb.characterSet=ZHS16GBK</span><br><span class="line">Oracle.install.db.config.starterdb.password.ALL=123456</span><br><span class="line">DECLINE_SECURITY_UPDATES=true</span><br></pre></td></tr></table></figure>
+<p><img src="/images/56.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十一步：</font>切换至oracle 帐号，创建oraInventory目录。</p>
+<ul>
+<li>#su - oracle</li>
+<li>新建oraInventory文件夹</li>
+<li>$mkdir /oracle/oraInventory</li>
+<li>切换至oracle安装文件根目录中</li>
+<li>$cd /opt/database(我的安装文件根目录在/opt/database)</li>
+</ul>
+<p><font color="#00EEEE">第十二步：</font>开始执行安装操作<br>$./runInstaller -silent -ignorePrereq -responseFile /home/oracle/db_install.rsp</p>
+<p><img src="/images/57.png" alt="图片一"></p>
+<ul>
+<li>然后进/oracle/oraInventory/logs/查看对应的安装日志文件</li>
+<li>#tail –f –n 2000 后面加上日志的路径和名称</li>
+</ul>
+<p><img src="/images/58.png" alt="图片一"><br><img src="/images/59.png" alt="图片一"></p>
+<ul>
+<li>安装过程比较漫长，请耐心等待。另外，请虔诚的祈祷！</li>
+<li>遇到如下提示时，执行以下操作：</li>
+<li>切换至root帐号，执行两个脚本命令</li>
+</ul>
+<p><img src="/images/60.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十三步：</font>新开一个客户端，root帐号下面执行orainstRoot.sh及root.sh两脚本。</p>
+<ul>
+<li>（也有可能只需要执行root.sh这一个脚本，总之没事）</li>
+<li>#cd /oracle/oraInventory</li>
+<li>#sh orainstRoot.sh</li>
+</ul>
+<p><img src="/images/61.png" alt="图片一"></p>
+<ul>
+<li>#cd /oracle/product/11.2.0/dbhome_1</li>
+<li>#sh root.sh</li>
+</ul>
+<p><img src="/images/62.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十四步：</font>安装监听,直接执行监听脚本</p>
+<ul>
+<li>切换至oracle用户</li>
+<li>$netca /silent /responseFile /home/oracle/netca.rsp(lsnrctl status, lsnrctl start, lsnrctl stop)</li>
+</ul>
+<p><img src="/images/63.png" alt="图片一"></p>
+<ul>
+<li>记录备注：(启动实例：输入startup，回车.这步是启动oracle服务。如果startup启动被告知已经启动了，可以先输入shutdown immediate；等shutdown结束之后，再输入startup。)</li>
+</ul>
+<p><font color="#00EEEE">第十五步：</font>安装实例</p>
+<ul>
+<li>#vi /home/oracle/dbca.rsp</li>
+<li>修改以下配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GDBNAME=orcl</span><br><span class="line">SID=orcl</span><br><span class="line">DATAFILEDESTINATION=/oracle/oradata</span><br><span class="line">RECOVERYAREADESTINATION=/oracle/flash_recovery_area</span><br><span class="line">CHARACTERSET=ZHS16GBK</span><br><span class="line">AUTOMATICMEMORYMANAGEMENT=true</span><br></pre></td></tr></table></figure>
+<p><img src="/images/64.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十六步：</font>静默模式建实例</p>
+<ul>
+<li>（此命令不能在Xshell工具中执行，会出现蜜汁bug）</li>
+<li>$dbca -silent -responseFile /home/oracle/dbca.rsp</li>
+</ul>
+<p><img src="/images/65.png" alt="图片一"></p>
+<p><font color="#00EEEE">第十七步：</font>测试oracle</p>
+<ul>
+<li>$sqlplus / as sysdba</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <!--添加本文结束-->
+    <div>
+      
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/24/清明游恭王府/" rel="next" title="清明游恭王府">
+                <i class="fa fa-chevron-left"></i> 清明游恭王府
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/yanmoai.jpg"
+                alt="Albert Saber" />
+            
+              <p class="site-author-name" itemprop="name">Albert Saber</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/saberxxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Albert Saber</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script type="text/javascript" src="/js/src/love.js"></script>
