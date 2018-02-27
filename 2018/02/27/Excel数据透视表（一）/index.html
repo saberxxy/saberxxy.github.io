@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="数据分析,Excel" />
 
 
 
@@ -80,21 +80,27 @@
 
 
 
-<meta name="description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
-<meta name="keywords" content="hexo">
+<meta name="description" content="本文主要介绍一下Excel的数据透视表功能，方便零基础的同学们入门。">
+<meta name="keywords" content="数据分析,Excel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo设置指定不渲染的页面">
-<meta property="og:url" content="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/index.html">
+<meta property="og:title" content="Excel数据透视表（一）">
+<meta property="og:url" content="http://www.xuexinyu.com/2018/02/27/Excel数据透视表（一）/index.html">
 <meta property="og:site_name" content="东皇">
-<meta property="og:description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
+<meta property="og:description" content="本文主要介绍一下Excel的数据透视表功能，方便零基础的同学们入门。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images/6.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/7.png">
-<meta property="og:updated_time" content="2018-02-03T02:37:49.673Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images/68.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/69.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/70.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/71.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/72.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/73.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/74.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/75.png">
+<meta property="og:updated_time" content="2018-02-27T15:17:06.112Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo设置指定不渲染的页面">
-<meta name="twitter:description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images/6.png">
+<meta name="twitter:title" content="Excel数据透视表（一）">
+<meta name="twitter:description" content="本文主要介绍一下Excel的数据透视表功能，方便零基础的同学们入门。">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images/68.png">
 
 
 
@@ -124,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/"/>
+  <link rel="canonical" href="http://www.xuexinyu.com/2018/02/27/Excel数据透视表（一）/"/>
 
 
 
 
 
-  <title>hexo设置指定不渲染的页面 | 东皇</title>
+  <title>Excel数据透视表（一） | 东皇</title>
   
 
 
@@ -278,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/">
+    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/02/27/Excel数据透视表（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert Saber">
@@ -295,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo设置指定不渲染的页面</h1>
+          <h1 class="post-title" itemprop="name headline">Excel数据透视表（一）</h1>
         
 
         <div class="post-meta">
@@ -307,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T20:34:50+08:00">
-                2018-01-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-27T23:03:00+08:00">
+                2018-02-27
               </time>
             
 
@@ -330,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/数据分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
                   </a>
                 </span>
 
@@ -353,6 +359,10 @@
           
 
           
+              <div class="post-description">
+                  本文主要介绍一下Excel的数据透视表功能，方便零基础的同学们入门。
+              </div>
+          
 
         </div>
       </header>
@@ -367,32 +377,7 @@
       
 
       
-        <p><em>昨天往博客上搬了个程序员老黄历，原地址如下：</em><br><em><a href="http://www.widuu.com/date/index.html" target="_blank" rel="noopener">http://www.widuu.com/date/index.html</a></em></p>
-<p>博客的页面如下：<br><img src="/images/6.png" alt="图片一"><br>然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。<br>于是乎看了配置文件，解决了问题。</p>
-<p>在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。<br><img src="/images/7.png" alt="图片二"></p>
-<ol>
-<li>跳过单个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过多个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”<br>- “CNAME”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过某一类文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “*.html”</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
+        <p><em>本文主要介绍一下Excel的数据透视表功能，方便零基础的同学们入门。</em><br>1、介绍数据透视表<br>（1）按照不同的纬度组织并展示数据；<br>（2）按照不同的指标分析数据；<br>（3）使用数据透视表处理数据，可以很方便的做一些使用函数处理非常麻烦的操作。<br>2、创建数据透视表。<br><img src="/images/68.png" alt="图片一"><br>选取数据区域，也就是透视表要包含的区域，选择在新工作表创建，也就是新的sheet页。<br><img src="/images/69.png" alt="图片一"><br>内容是按照方框的颜色统一的。标签就相当于是维度，而求和项则相当于度量。<br><img src="/images/70.png" alt="图片一"><br>3、更改数据源<br>透视表的一大优势就是，即使数据源发生改变，只需要刷新一下，就可同步。<br><img src="/images/71.png" alt="图片一"><br>4、插入计算字段<br>假设要根据开票金额*0.1，求取缴税金额，对应到图上，也就是根据红框的内容，求出黄框的内容。<br><img src="/images/72.png" alt="图片一"><br>步骤如下<br><img src="/images/73.png" alt="图片一"><br><img src="/images/74.png" alt="图片一"><br><img src="/images/75.png" alt="图片一"><br>妥了。<br>以上只是一个简单的小介绍，熟悉BI工具的同学们可能看着十分眼熟，对，这就是传说中的分维度统计，再进一步就是钻取。</p>
 
       
     </div>
@@ -423,7 +408,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+          
+            <a href="/tags/Excel/" rel="tag"># Excel</a>
           
         </div>
       
@@ -436,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/28/从买域名到博客发布，中间遇到的坑和趟过的雷/" rel="next" title="从买域名到博客发布，中间遇到的坑和趟过的雷">
-                <i class="fa fa-chevron-left"></i> 从买域名到博客发布，中间遇到的坑和趟过的雷
+              <a href="/2018/02/25/《琵琶语》填词/" rel="next" title="《琵琶语》填词">
+                <i class="fa fa-chevron-left"></i> 《琵琶语》填词
               </a>
             
           </div>
@@ -445,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/01/Python爬虫获取基金数据/" rel="prev" title="Python爬虫获取基金数据">
-                Python爬虫获取基金数据 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
