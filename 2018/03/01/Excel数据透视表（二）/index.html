@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Redis," />
+  <meta name="keywords" content="数据分析,Excel" />
 
 
 
@@ -80,24 +80,27 @@
 
 
 
-<meta name="description" content="Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。1、上万能的GitHub，找到微软开发的Windows版Redis，传送门 2、为了安装方便，直接选择下载第一个。 3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下一步”。 4、打开cmd窗口，测试运行一下，使用命令【redis-server.exe redis.">
-<meta name="keywords" content="Redis">
+<meta name="description" content="上回用直接动手（简单粗暴）的方法讲述了数据透视表的简单功能，这次讲一下基于数据透视表的动态图表功能。">
+<meta name="keywords" content="数据分析,Excel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows下安装Redis">
-<meta property="og:url" content="http://www.xuexinyu.com/2018/02/23/Windows下安装Redis/index.html">
+<meta property="og:title" content="Excel数据透视表（二）">
+<meta property="og:url" content="http://www.xuexinyu.com/2018/03/01/Excel数据透视表（二）/index.html">
 <meta property="og:site_name" content="东皇">
-<meta property="og:description" content="Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。1、上万能的GitHub，找到微软开发的Windows版Redis，传送门 2、为了安装方便，直接选择下载第一个。 3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下一步”。 4、打开cmd窗口，测试运行一下，使用命令【redis-server.exe redis.">
+<meta property="og:description" content="上回用直接动手（简单粗暴）的方法讲述了数据透视表的简单功能，这次讲一下基于数据透视表的动态图表功能。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images/33.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/34.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/35.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/36.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/37.png">
-<meta property="og:updated_time" content="2018-02-23T14:39:19.800Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images/76.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/77.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/78.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/79.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/80.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/81.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/82.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/2.gif">
+<meta property="og:updated_time" content="2018-03-01T14:45:31.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows下安装Redis">
-<meta name="twitter:description" content="Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。1、上万能的GitHub，找到微软开发的Windows版Redis，传送门 2、为了安装方便，直接选择下载第一个。 3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下一步”。 4、打开cmd窗口，测试运行一下，使用命令【redis-server.exe redis.">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images/33.png">
+<meta name="twitter:title" content="Excel数据透视表（二）">
+<meta name="twitter:description" content="上回用直接动手（简单粗暴）的方法讲述了数据透视表的简单功能，这次讲一下基于数据透视表的动态图表功能。">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images/76.png">
 
 
 
@@ -127,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xuexinyu.com/2018/02/23/Windows下安装Redis/"/>
+  <link rel="canonical" href="http://www.xuexinyu.com/2018/03/01/Excel数据透视表（二）/"/>
 
 
 
 
 
-  <title>Windows下安装Redis | 东皇</title>
+  <title>Excel数据透视表（二） | 东皇</title>
   
 
 
@@ -281,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/02/23/Windows下安装Redis/">
+    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/03/01/Excel数据透视表（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert Saber">
@@ -298,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Windows下安装Redis</h1>
+          <h1 class="post-title" itemprop="name headline">Excel数据透视表（二）</h1>
         
 
         <div class="post-meta">
@@ -310,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T22:29:08+08:00">
-                2018-02-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T22:39:40+08:00">
+                2018-03-01
               </time>
             
 
@@ -333,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Redis/" itemprop="url" rel="index">
-                    <span itemprop="name">Redis</span>
+                  <a href="/categories/数据分析/" itemprop="url" rel="index">
+                    <span itemprop="name">数据分析</span>
                   </a>
                 </span>
 
@@ -356,6 +359,10 @@
           
 
           
+              <div class="post-description">
+                  上回用直接动手（简单粗暴）的方法讲述了数据透视表的简单功能，这次讲一下基于数据透视表的动态图表功能。
+              </div>
+          
 
         </div>
       </header>
@@ -370,16 +377,7 @@
       
 
       
-        <p><em>Redis本是在Linux下安装使用的软件，要在Windows下安装看起来是一件复杂的事情，然而其实非常的简单。</em><br><br><br>1、上万能的GitHub，找到微软开发的Windows版Redis，<a href="https://github.com/MSOpenTech/redis/releases" target="_blank" rel="noopener">传送门</a><br><img src="/images/33.png" alt="图片一"></p>
-<p>2、为了安装方便，直接选择下载第一个。</p>
-<p>3、接下来就是安装过程，和在Windows下安装大多数软件一样，一路“下一步”。<br><img src="/images/34.png" alt="图片一"></p>
-<p>4、打开cmd窗口，测试运行一下，使用命令【redis-server.exe redis.windows.conf】，启动redis 服务。然后发现报了个错，如下<br><img src="/images/35.png" alt="图片一"></p>
-<p>5、解决方案就是按照如下顺序输入命令</p>
-<blockquote>
-<p>redis-cli.exe<br>shutdown<br>exit<br>redis-server.exe redis.windows.conf</p>
-</blockquote>
-<p>然后启动成功<br><img src="/images/36.png" alt="图片一"></p>
-<p>6、另起一个窗口，测试一下，成功<br><img src="/images/37.png" alt="图片一"></p>
+        <p><em>上回用直接动手（简单粗暴）的方法讲述了数据透视表的简单功能，这次讲一下基于数据透视表的动态图表功能。</em><br>1、接上篇，将数据透视表的字段只选择为省份，求和项为开票金额，需求是要按照季度计算并切换每个省的开票金额所占比例。<br><img src="/images/76.png" alt="图片一"><br>2、首先将开票金额的值显示方式设置为所占总数百分比。<br><img src="/images/77.png" alt="图片一"><br><img src="/images/78.png" alt="图片一"><br>3、做个条形图。<br><img src="/images/79.png" alt="图片一"><br>4、隐藏图表上的所有字段按钮。<br><img src="/images/80.png" alt="图片一"><br>5、选中图表，插入切片器，并选择季度。<br><img src="/images/81.png" alt="图片一"><br>6、点击不同的季度，就可以看到图的切换，逼格满满。<br><img src="/images/82.png" alt="图片一"><br><img src="/images/2.gif" alt="图片一"></p>
 
       
     </div>
@@ -410,7 +408,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Redis/" rel="tag"># Redis</a>
+            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+          
+            <a href="/tags/Excel/" rel="tag"># Excel</a>
           
         </div>
       
@@ -423,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/09/Windows安装并配置MySQL/" rel="next" title="Windows安装并配置MySQL">
-                <i class="fa fa-chevron-left"></i> Windows安装并配置MySQL
+              <a href="/2018/02/27/Excel数据透视表（一）/" rel="next" title="Excel数据透视表（一）">
+                <i class="fa fa-chevron-left"></i> Excel数据透视表（一）
               </a>
             
           </div>
@@ -432,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/24/清明游恭王府/" rel="prev" title="清明游恭王府">
-                清明游恭王府 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
