@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="数据分析, Python" />
 
 
 
@@ -80,21 +80,21 @@
 
 
 
-<meta name="description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
-<meta name="keywords" content="hexo">
+<meta name="description" content="想到一个统计学中关于异常值检测的问题，于是查了一些资料，发现了一种比较常用且好用的方法，叫做Tukey&apos;s Test，这篇文章主要介绍该方法的原理与Python实现。">
+<meta name="keywords" content="数据分析, Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo设置指定不渲染的页面">
-<meta property="og:url" content="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/index.html">
+<meta property="og:title" content="异常值检测——Tukey&#39;s Test">
+<meta property="og:url" content="http://www.xuexinyu.com/2018/03/10/异常值检测——Tukey's Test/index.html">
 <meta property="og:site_name" content="东皇">
-<meta property="og:description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
+<meta property="og:description" content="想到一个统计学中关于异常值检测的问题，于是查了一些资料，发现了一种比较常用且好用的方法，叫做Tukey&apos;s Test，这篇文章主要介绍该方法的原理与Python实现。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images/6.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/7.png">
-<meta property="og:updated_time" content="2018-02-27T15:22:45.608Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images/98.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/99.png">
+<meta property="og:updated_time" content="2018-03-10T12:29:50.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo设置指定不渲染的页面">
-<meta name="twitter:description" content="昨天往博客上搬了个程序员老黄历，原地址如下：http://www.widuu.com/date/index.html 博客的页面如下：然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。于是乎看了配置文件，解决了问题。 在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。  跳过单个文件 skip_render:   - “REA">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images/6.png">
+<meta name="twitter:title" content="异常值检测——Tukey&#39;s Test">
+<meta name="twitter:description" content="想到一个统计学中关于异常值检测的问题，于是查了一些资料，发现了一种比较常用且好用的方法，叫做Tukey&apos;s Test，这篇文章主要介绍该方法的原理与Python实现。">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images/98.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/"/>
+  <link rel="canonical" href="http://www.xuexinyu.com/2018/03/10/异常值检测——Tukey's Test/"/>
 
 
 
 
 
-  <title>hexo设置指定不渲染的页面 | 东皇</title>
+  <title>异常值检测——Tukey's Test | 东皇</title>
   
 
 
@@ -278,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/01/30/hexo设置指定不渲染的页面/">
+    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/03/10/异常值检测——Tukey's Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert Saber">
@@ -295,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo设置指定不渲染的页面</h1>
+          <h1 class="post-title" itemprop="name headline">异常值检测——Tukey's Test</h1>
         
 
         <div class="post-meta">
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T20:34:50+08:00">
-                2018-01-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T20:18:18+08:00">
+                2018-03-10
               </time>
             
 
@@ -330,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -353,6 +353,10 @@
           
 
           
+              <div class="post-description">
+                  想到一个统计学中关于异常值检测的问题，于是查了一些资料，发现了一种比较常用且好用的方法，叫做Tukey's Test，这篇文章主要介绍该方法的原理与Python实现。
+              </div>
+          
 
         </div>
       </header>
@@ -367,32 +371,10 @@
       
 
       
-        <p><em>昨天往博客上搬了个程序员老黄历，原地址如下：</em><br><em><a href="http://www.widuu.com/date/index.html" target="_blank" rel="noopener">http://www.widuu.com/date/index.html</a></em></p>
-<p>博客的页面如下：<br><img src="/images/6.png" alt="图片一"><br>然而建好了之后发现，hexo居然把这个自定义页面按照主题直接渲染了。<br>于是乎看了配置文件，解决了问题。</p>
-<p>在hexo的_config.yml配置文件中，有这么一项配置，只要在skip_render中配置就可以。<br><img src="/images/7.png" alt="图片二"></p>
-<ol>
-<li>跳过单个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过多个文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “README.md”<br>- “CNAME”</p>
-</blockquote>
-</blockquote>
-</li>
-<li>跳过某一类文件<blockquote>
-<p>skip_render: </p>
-<blockquote>
-<p>- “*.html”</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
+        <p><em>&emsp;&emsp;想到一个统计学中关于异常值检测的问题，于是查了一些资料，发现了一种比较常用且好用的方法，叫做Tukey’s Test，这篇文章主要介绍该方法的原理与Python实现。</em></p>
+<h1 id="一、原理介绍"><a href="#一、原理介绍" class="headerlink" title="一、原理介绍"></a>一、原理介绍</h1><p>1、该算法是用四分位数是自动识别出可能的异常值的。<br>2、将数列从小到大排列，取下四分位数Q1和上四分位数Q3。<br>3、用公式估计出该数列的最大值和最小值<br>（1）最小估计值：<font color="#00EEEE">Q1-k(Q3-Q1)</font><br>（2）最小估计值：<font color="#00EEEE">Q3+k(Q3-Q1)</font><br>4、公式中的k是一个参数，一般来说k取1.5是中度异常值的范围，取3是重度异常值的范围。<br>5、这样就有了如下的结论：<br>（1）数列中小于<font color="#00EEEE">Q1-3*(Q3-Q1)</font>和大于<font color="#00EEEE">Q3+3*(Q3-Q1)</font>的值属于重度异常值；<br>（2）数列中介于<font color="#00EEEE">Q1-1.5*(Q3-Q1)</font>和<font color="#00EEEE">Q1-3*(Q3-Q1)</font>，以及介于<font color="#00EEEE">Q1+1.5*(Q3-Q1)</font>和<font color="#00EEEE">Q1+3*(Q3-Q1)</font>的值属于中度异常值；<br>（3）其余值为正常值。</p>
+<h1 id="二、Python实现"><a href="#二、Python实现" class="headerlink" title="二、Python实现"></a>二、Python实现</h1><p>1、用Python实现这个算法非常简单，需要一个包来计算四分位数<br><img src="/images/98.png" alt="图片一"><br>2、整个源码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># 异常值检测</span><br><span class="line"># 使用算法：Tukey&apos;s Test</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">import stats as sts</span><br><span class="line"></span><br><span class="line">list = [1,4,8,90,98,44,35,56,2,41,11,24,23,45,500, 150]</span><br><span class="line">print(list)</span><br><span class="line"></span><br><span class="line"># 求四分位数</span><br><span class="line">print(&apos;下四分位数：&apos;, sts.quantile(list,p=0.25))</span><br><span class="line">print(&apos;上四分位数：&apos;, sts.quantile(list,p=0.75))</span><br><span class="line">q1 = sts.quantile(list,p=0.25)</span><br><span class="line">q3 = sts.quantile(list,p=0.75)</span><br><span class="line"></span><br><span class="line">#k=1.5  中度异常</span><br><span class="line">k1 = 1.5</span><br><span class="line">g_min_m = q1-k1*(q3-q1)</span><br><span class="line">g_max_m = q3+k1*(q3-q1)</span><br><span class="line"></span><br><span class="line">#k=3 重度异常</span><br><span class="line">k2 = 3</span><br><span class="line">g_min_b = q1-k2*(q3-q1)</span><br><span class="line">g_max_b = q3+k2*(q3-q1)</span><br><span class="line"></span><br><span class="line"># g_min_b, g_min_m, g_max_m, g_max_b</span><br><span class="line">print(g_min_b, g_min_m, g_max_m, g_max_b)</span><br><span class="line">for i in list:</span><br><span class="line">    if i&lt;g_min_b or i&gt;g_max_b:</span><br><span class="line">        print(&apos;重度异常值：&apos;, i)</span><br><span class="line">    elif i&gt;g_min_b and i&lt;g_min_m:</span><br><span class="line">         print(&apos;中度异常值：&apos;, i)</span><br><span class="line">    elif i&gt;g_max_m and i&lt;g_max_b:</span><br><span class="line">         print(&apos;中度异常值：&apos;, i)</span><br></pre></td></tr></table></figure></p>
+<p>3、输出的结果如下<br><img src="/images/99.png" alt="图片一"></p>
 
       
     </div>
@@ -423,7 +405,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -436,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/28/从买域名到博客发布，中间遇到的坑和趟过的雷/" rel="next" title="从买域名到博客发布，中间遇到的坑和趟过的雷">
-                <i class="fa fa-chevron-left"></i> 从买域名到博客发布，中间遇到的坑和趟过的雷
+              <a href="/2018/03/08/Jupyter教程（二）/" rel="next" title="Jupyter教程（二）">
+                <i class="fa fa-chevron-left"></i> Jupyter教程（二）
               </a>
             
           </div>
@@ -445,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/01/Python爬虫获取基金数据/" rel="prev" title="Python爬虫获取基金数据">
-                Python爬虫获取基金数据 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -575,6 +564,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、原理介绍"><span class="nav-number">1.</span> <span class="nav-text">一、原理介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Python实现"><span class="nav-number">2.</span> <span class="nav-text">二、Python实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
