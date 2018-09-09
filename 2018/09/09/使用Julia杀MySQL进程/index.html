@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="数据分析, Python" />
+  <meta name="keywords" content="Julia" />
 
 
 
@@ -80,25 +80,24 @@
 
 
 
-<meta name="description" content="之前用pychat调用聊天机器人实现过一个自动接收、回复消息，且可以查看被撤回的消息的功能。今天使用itchat接口，分析一下微信好友的情况。">
-<meta name="keywords" content="数据分析, Python">
+<meta name="description" content="使用Julia投入生产的一段代码，有必要在此记录分享">
+<meta name="keywords" content="Julia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信好友简单分析">
-<meta property="og:url" content="http://www.xuexinyu.com/2018/05/27/微信好友简单分析/index.html">
+<meta property="og:title" content="使用Julia杀MySQL进程">
+<meta property="og:url" content="http://www.xuexinyu.com/2018/09/09/使用Julia杀MySQL进程/index.html">
 <meta property="og:site_name" content="东皇">
-<meta property="og:description" content="之前用pychat调用聊天机器人实现过一个自动接收、回复消息，且可以查看被撤回的消息的功能。今天使用itchat接口，分析一下微信好友的情况。">
+<meta property="og:description" content="使用Julia投入生产的一段代码，有必要在此记录分享">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/12.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/13.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/14.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/15.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/16.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/17.png">
-<meta property="og:updated_time" content="2018-05-27T15:41:07.877Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/37.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/38.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/39.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/40.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/41.png">
+<meta property="og:updated_time" content="2018-09-09T03:20:24.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信好友简单分析">
-<meta name="twitter:description" content="之前用pychat调用聊天机器人实现过一个自动接收、回复消息，且可以查看被撤回的消息的功能。今天使用itchat接口，分析一下微信好友的情况。">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images2/12.png">
+<meta name="twitter:title" content="使用Julia杀MySQL进程">
+<meta name="twitter:description" content="使用Julia投入生产的一段代码，有必要在此记录分享">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images2/37.png">
 
 
 
@@ -128,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://www.xuexinyu.com/2018/05/27/微信好友简单分析/"/>
+  <link rel="canonical" href="http://www.xuexinyu.com/2018/09/09/使用Julia杀MySQL进程/"/>
 
 
 
 
 
-  <title>微信好友简单分析 | 东皇</title>
+  <title>使用Julia杀MySQL进程 | 东皇</title>
   
 
 
@@ -282,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/05/27/微信好友简单分析/">
+    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/09/09/使用Julia杀MySQL进程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Albert Saber">
@@ -299,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">微信好友简单分析</h1>
+          <h1 class="post-title" itemprop="name headline">使用Julia杀MySQL进程</h1>
         
 
         <div class="post-meta">
@@ -311,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T23:35:50+08:00">
-                2018-05-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-09T10:58:24+08:00">
+                2018-09-09
               </time>
             
 
@@ -334,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据分析/" itemprop="url" rel="index">
-                    <span itemprop="name">数据分析</span>
+                  <a href="/categories/Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Julia</span>
                   </a>
                 </span>
 
@@ -358,7 +357,7 @@
 
           
               <div class="post-description">
-                  之前用pychat调用聊天机器人实现过一个自动接收、回复消息，且可以查看被撤回的消息的功能。今天使用itchat接口，分析一下微信好友的情况。
+                  使用Julia投入生产的一段代码，有必要在此记录分享
               </div>
           
 
@@ -375,7 +374,8 @@
       
 
       
-        <p><em>&emsp;&emsp;<font color="#436EEE">之前用pychat调用聊天机器人实现过一个自动接收、回复消息，且可以查看被撤回的消息的功能。今天使用itchat接口，分析一下微信好友的情况。</font></em><br>1、调用接口登录，并抓取好友信息<br><img src="/images2/12.png" alt="图片一"><br>2、统计好友性别<br><img src="/images2/13.png" alt="图片一"><br>3、画出好友性别的统计图。根据统计发现，我的微信好友中男性占52%，女性占39%，其余9%为性别不明者。<br><img src="/images2/14.png" alt="图片一"><br>4、获取好友的个性签名，并绘制词云。<br><img src="/images2/15.png" alt="图片一"><br><img src="/images2/16.png" alt="图片一"><br>5、从词云中可以发现，我的微信好友们的个性签名以“努力”，“快乐”为主，总体来说大家都很优秀，非常上进。<br>6、顺带说一句，用matplotlib作图时，中文标签会无法显示，负号也错误显示，因此加入两行代码解决该问题。<br><img src="/images2/17.png" alt="图片一"></p>
+        <font size="3"><br>&emsp;&emsp;最近数据分析所使用的 OLTP库常常出现原子锁，即元数据锁。以及各种查询时长超长，且失控的查询进程，为此写了一段Julia代码进行定时处理。<br>&emsp;&emsp;所要杀死的进程分为两类：<br>&emsp;&emsp;（1）超过850s的查询语句；<br>&emsp;&emsp;（2）产生“Waiting for table metadata lock”的查询。<br>&emsp;&emsp;主要结构由三个函数构成，一个函数用来调度，两个函数用来监测并执行kill语句。</font><br><br><font size="2">&emsp;&emsp;要实现上述功能，需要用到Julia中的三个包：<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">MySQL</font>包：用来连接数据库；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">DataFrames</font>包：和MySQL包配合使用，用来监测进程；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">Dates</font>包：用来计时。<br></font><br><br><font size="2">&emsp;&emsp;首先引入这几个包。在引入的过程中既可以用using，也可以用import，只不过用import引入时，在调用包内函数时需要在函数前写上包名，而用using则不必，但是在函数名有冲突的时候会很麻烦，因此除非是非常常用的包，笔者并不建议使用using。</font><br><img src="/images2/37.png" alt="图片一"><br><font size="3">&emsp;&emsp;先写一个函数start()作为入口，用于启动程序<br>&emsp;&emsp;1、连接数据库。</font><br><font size="2">&emsp;&emsp;第一个参数为数据库的IP地址，第二个为用户名，第三个为密码，db为数据库名，port为端口。</font><br><img src="/images2/38.png" alt="图片一"><br><font size="3">&emsp;&emsp;2、写一个死循环，反复调用检测和杀进程函数。</font><br><font size="2">&emsp;&emsp;kill_by_lock()函数用于杀掉产生元数据锁的进程，kill_by_time()函数用于杀掉时间超过850s的查询。count变量用来统计执行轮数，每执行一轮加一并打印。sleep()函数用于休眠，是Dates包中的函数，参数为秒。总体而言，start()函数的意思就是每隔十秒检测一次产生原子锁和超时的查询，满足条件则杀掉。</font><br><img src="/images2/39.png" alt="图片一"><br><font size="3">&emsp;&emsp;3、杀原子锁和超时查询的函数。</font><br><font size="2">&emsp;&emsp;这两个函数的结构类似，都是先查后杀。以kill_by_lock()为例。第25行为查询进程的SQL语句，第26行为进行查询并使用DataFrame承接返回结果。顺带提一句，Julia中的DataFrame与Python和R中的DataFrame又是另一种感觉，但使用上依旧是很方便。第27到32行的for循环则是遍历查询结果，并清除进程，如果没有满足条件的进程则自行跳过。同理，在后面补上杀超时查询的函数。<br></font><br><img src="/images2/40.png" alt="图片一"><br><img src="/images2/41.png" alt="图片一"><br><font size="3">&emsp;&emsp;这段代码如果用一个权限比较高的账户执行，有极大地风险，因此需要在检测的过程中加入判断哪些用户的查询，具体细节通过简单的SQL即可实现，此处不表。<br>&emsp;&emsp;于是乎，每次工作，首先开启此段代码。由于这段代码可以保护正常查询，且杀掉锁表的语句，因此我给它起了两个名字——“<strong>摇篮</strong>”和“<strong>断头台</strong>”。</font>
+
 
       
     </div>
@@ -406,9 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/Julia/" rel="tag"># Julia</a>
           
         </div>
       
@@ -421,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/上海地铁数据初探/" rel="next" title="上海地铁数据初探">
-                <i class="fa fa-chevron-left"></i> 上海地铁数据初探
+              <a href="/2018/08/27/初识Julia（二）/" rel="next" title="初识Julia（二）">
+                <i class="fa fa-chevron-left"></i> 初识Julia（二）
               </a>
             
           </div>
@@ -430,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/01/SQL教学（二）/" rel="prev" title="SQL教学（二）">
-                SQL教学（二） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
