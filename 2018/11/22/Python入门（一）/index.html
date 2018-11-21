@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="s8Pe1TBqyy" />
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Python入门（一）">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python入门（一）">
+<meta property="og:url" content="http://www.xuexinyu.com/2018/11/22/Python入门（一）/index.html">
+<meta property="og:site_name" content="东皇">
+<meta property="og:description" content="Python入门（一）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/42.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/43.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/44.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/45.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/46.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/47.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/48.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/49.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/50.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/51.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/52.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/53.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/54.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/55.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/56.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/57.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/58.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/59.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/60.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/61.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/62.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/63.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/64.png">
+<meta property="og:updated_time" content="2018-11-21T17:11:30.459Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python入门（一）">
+<meta name="twitter:description" content="Python入门（一）">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images2/42.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.xuexinyu.com/2018/11/22/Python入门（一）/"/>
+
+
+
+
+
+  <title>Python入门（一） | 东皇</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/saberxxy"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/images/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png" target="_blank"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">东皇</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/mypages/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-coder">
+          <a href="/mypages/coder.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            程序员老黄历
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.xuexinyu.com/2018/11/22/Python入门（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Albert Saber">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yanmoai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东皇">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python入门（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T00:46:43+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Python入门（一）
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><font size="3"><br>&emsp;&emsp;对于一个数据分析师而言，常用的分析工具：Excel、SQL、BI工具、编程语言（Python+R）。我们有必要掌握编程语言，进行更便捷的数据处理和分析。<br>&emsp;&emsp;Python 还是 R，这是个问题？<br>&emsp;&emsp;<strong>小孩子才做选择，我们都要！</strong><br>&emsp;&emsp;延伸：Python和R在各方面的对比，请看此文<a href="https://www.cnblogs.com/nxld/p/6058831.html" target="_blank" rel="noopener">https://www.cnblogs.com/nxld/p/6058831.html</a><br></font><br></p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>版本：3.0+<br>环境：Anaconda+PyCharm</p>
+<h2 id="执行第一个Python程序"><a href="#执行第一个Python程序" class="headerlink" title="执行第一个Python程序"></a>执行第一个Python程序</h2><blockquote>
+<p>print(“Hello, World!”)</p>
+</blockquote>
+<p><img src="/images2/42.png" alt="图片一"></p>
+<p><strong>tips：</strong>为防止出现各种关于乱码的问题，建议在每个文件前加# -<em>- coding=utf-8 -</em>-</p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="关键字（保留字）"><a href="#关键字（保留字）" class="headerlink" title="关键字（保留字）"></a>关键字（保留字）</h2><p>&emsp;&emsp;下面的列表显示了在Python中的保留字。这些保留字不能用作常数或变数，或任何其他标识符名称。所有 Python 的关键字只包含小写字母。<br><img src="/images2/43.png" alt="图片一"></p>
+<h2 id="缩进和代码块"><a href="#缩进和代码块" class="headerlink" title="缩进和代码块"></a>缩进和代码块</h2><p>&emsp;&emsp;Python 与其他语言最大的区别就是，Python 的代码块不使用大括号 {} 来控制类，函数以及其他逻辑判断。python 最具特色的就是用缩进来写模块。<br>&emsp;&emsp;缩进的空白数量是可变的，但是所有代码块语句必须包含相同的缩进空白数量，这个必须严格执行。<br>&emsp;&emsp;建议一律采用四个空格或一个tab键进行缩进。<br><img src="/images2/44.png" alt="图片一"></p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>&emsp;&emsp;采用#注释单行，三对单引号‘’‘’‘’注释一段<br><img src="/images2/45.png" alt="图片一"></p>
+<h1 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h1><p>&emsp;&emsp;Python有五个标准的数据类型：<br>&emsp;&emsp;1、Numbers（数字）：整型、浮点型<br><img src="/images2/46.png" alt="图片一"><br>&emsp;&emsp;2、String（字符串）<br><img src="/images2/47.png" alt="图片一"><br>&emsp;&emsp;3、List（列表）<br><img src="/images2/48.png" alt="图片一"><br>&emsp;&emsp;4、Tuple（元组）<br><img src="/images2/49.png" alt="图片一"><br>&emsp;&emsp;5、Dictionary（字典）<br><img src="/images2/50.png" alt="图片一"></p>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p><img src="/images2/51.png" alt="图片一"><br><img src="/images2/52.png" alt="图片一"><br>&emsp;&emsp;<strong>思考并尝试：</strong><br>&emsp;&emsp;（1）将a_7和a_8换成浮点数再进行以上运算会是什么情况；<br>&emsp;&emsp;（2）混合运算的优先级会怎么样；<br>&emsp;&emsp;（3）不同数据类型之间的运算会怎么样。</p>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p><img src="/images2/53.png" alt="图片一"><br><img src="/images2/54.png" alt="图片一"></p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><img src="/images2/55.png" alt="图片一"></p>
+<h1 id="三种基本结构"><a href="#三种基本结构" class="headerlink" title="三种基本结构"></a>三种基本结构</h1><p>&emsp;&emsp;任何复杂的程序都可以由顺序、选择、循环三种结构构成。对于这三类结构的应用体现了程序编写者的基本素养，人在写代码的基本含义就是人在用这三种结构解决问题。</p>
+<h2 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h2><p>&emsp;&emsp;所谓顺序结构，就是指程序按照“由上到下”的顺序进行，清晰可读，十分简单。<br><img src="/images2/56.png" alt="图片一"></p>
+<h2 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h2><p>&emsp;&emsp;分支结构也叫判断结构，简而言之就是满足某条件则执行一段代码，不满足则执行另一段代码。<br><img src="/images2/57.png" alt="图片一"><br><img src="/images2/58.png" alt="图片一"></p>
+<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h2><p>&emsp;&emsp;循环结构是这三类结构中比较有趣的一种，尤其是在Python中使用十分灵活。<br><img src="/images2/59.png" alt="图片一"></p>
+<p>&emsp;&emsp;（1）while循环<br>&emsp;&emsp;用while循环实现1+2+3+……+100的和<br><img src="/images2/60.png" alt="图片一"></p>
+<p>&emsp;&emsp;（2）for循环<br>&emsp;&emsp;for循环可以遍历任何序列，以下以列表为例<br><img src="/images2/61.png" alt="图片一"></p>
+<p>&emsp;&emsp;<strong>思考并尝试：</strong><br>&emsp;&emsp;循环输出一个元组。<br><br></p>
+<p>&emsp;&emsp;（3）range函数<br>&emsp;&emsp;在for循环中，可以使用内置range()函数，它有三个参数range(A, B, C)，A和B代表生成的区间，C代表步长。<br><img src="/images2/62.png" alt="图片一"><br>&emsp;&emsp;注意观察上图的输出结果，输出的是从A到B-1的值，是一个左闭右开的区间<br>&emsp;&emsp;<strong>思考并尝试：</strong><br>&emsp;&emsp;输出从1到100之间所有的偶数之和</p>
+<h1 id="两道小题"><a href="#两道小题" class="headerlink" title="两道小题"></a>两道小题</h1><h2 id="输出九九乘法表"><a href="#输出九九乘法表" class="headerlink" title="输出九九乘法表"></a>输出九九乘法表</h2><p><img src="/images2/63.png" alt="图片一"></p>
+<h2 id="输出前20位斐波那契数列"><a href="#输出前20位斐波那契数列" class="headerlink" title="输出前20位斐波那契数列"></a>输出前20位斐波那契数列</h2><p><img src="/images2/64.png" alt="图片一"></p>
+
+      
+    </div>
+    
+    
+    
+
+    <!--添加本文结束-->
+    <div>
+      
+        ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/使用Julia杀MySQL进程/" rel="next" title="使用Julia杀MySQL进程">
+                <i class="fa fa-chevron-left"></i> 使用Julia杀MySQL进程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/yanmoai.jpg"
+                alt="Albert Saber" />
+            
+              <p class="site-author-name" itemprop="name">Albert Saber</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/saberxxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速入门"><span class="nav-number">1.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行第一个Python程序"><span class="nav-number">1.2.</span> <span class="nav-text">执行第一个Python程序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础语法"><span class="nav-number">2.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字（保留字）"><span class="nav-number">2.1.</span> <span class="nav-text">关键字（保留字）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩进和代码块"><span class="nav-number">2.2.</span> <span class="nav-text">缩进和代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">2.3.</span> <span class="nav-text">注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量类型"><span class="nav-number">3.</span> <span class="nav-text">变量类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符"><span class="nav-number">4.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">4.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符"><span class="nav-number">4.2.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">4.3.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三种基本结构"><span class="nav-number">5.</span> <span class="nav-text">三种基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顺序结构"><span class="nav-number">5.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支结构"><span class="nav-number">5.2.</span> <span class="nav-text">分支结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环结构"><span class="nav-number">5.3.</span> <span class="nav-text">循环结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两道小题"><span class="nav-number">6.</span> <span class="nav-text">两道小题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输出九九乘法表"><span class="nav-number">6.1.</span> <span class="nav-text">输出九九乘法表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出前20位斐波那契数列"><span class="nav-number">6.2.</span> <span class="nav-text">输出前20位斐波那契数列</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Albert Saber</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_pv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider"></span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<script type="text/javascript" src="/js/src/love.js"></script>
