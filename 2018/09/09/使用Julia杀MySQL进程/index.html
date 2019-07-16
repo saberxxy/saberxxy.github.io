@@ -88,16 +88,16 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="使用Julia投入生产的一段代码，有必要在此记录分享">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/37.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/38.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/39.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/40.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images2/41.png">
-<meta property="og:updated_time" content="2019-07-16T09:59:57.426Z">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/37.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/38.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/39.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/40.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/41.png">
+<meta property="og:updated_time" content="2019-07-16T11:33:16.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Julia杀MySQL进程">
 <meta name="twitter:description" content="使用Julia投入生产的一段代码，有必要在此记录分享">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images2/37.png">
+<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/37.png">
 
 
 
@@ -374,7 +374,7 @@
       
 
       
-        <font size="3"><br>&emsp;&emsp;最近数据分析所使用的 OLTP库常常出现原子锁，即元数据锁。以及各种查询时长超长，且失控的查询进程，为此写了一段Julia代码进行定时处理。<br>&emsp;&emsp;所要杀死的进程分为两类：<br>&emsp;&emsp;（1）超过850s的查询语句；<br>&emsp;&emsp;（2）产生“Waiting for table metadata lock”的查询。<br>&emsp;&emsp;主要结构由三个函数构成，一个函数用来调度，两个函数用来监测并执行kill语句。</font><br><br><font size="2">&emsp;&emsp;要实现上述功能，需要用到Julia中的三个包：<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">MySQL</font>包：用来连接数据库；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">DataFrames</font>包：和MySQL包配合使用，用来监测进程；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">Dates</font>包：用来计时。<br></font><br><br><font size="2">&emsp;&emsp;首先引入这几个包。在引入的过程中既可以用using，也可以用import，只不过用import引入时，在调用包内函数时需要在函数前写上包名，而用using则不必，但是在函数名有冲突的时候会很麻烦，因此除非是非常常用的包，笔者并不建议使用using。</font><br><img src="/images2/37.png" alt="图片一"><br><font size="3">&emsp;&emsp;先写一个函数start()作为入口，用于启动程序<br>&emsp;&emsp;1、连接数据库。</font><br><font size="2">&emsp;&emsp;第一个参数为数据库的IP地址，第二个为用户名，第三个为密码，db为数据库名，port为端口。</font><br><img src="/images2/38.png" alt="图片一"><br><font size="3">&emsp;&emsp;2、写一个死循环，反复调用检测和杀进程函数。</font><br><font size="2">&emsp;&emsp;kill_by_lock()函数用于杀掉产生元数据锁的进程，kill_by_time()函数用于杀掉时间超过850s的查询。count变量用来统计执行轮数，每执行一轮加一并打印。sleep()函数用于休眠，是Dates包中的函数，参数为秒。总体而言，start()函数的意思就是每隔十秒检测一次产生原子锁和超时的查询，满足条件则杀掉。</font><br><img src="/images2/39.png" alt="图片一"><br><font size="3">&emsp;&emsp;3、杀原子锁和超时查询的函数。</font><br><font size="2">&emsp;&emsp;这两个函数的结构类似，都是先查后杀。以kill_by_lock()为例。第25行为查询进程的SQL语句，第26行为进行查询并使用DataFrame承接返回结果。顺带提一句，Julia中的DataFrame与Python和R中的DataFrame又是另一种感觉，但使用上依旧是很方便。第27到32行的for循环则是遍历查询结果，并清除进程，如果没有满足条件的进程则自行跳过。同理，在后面补上杀超时查询的函数。<br></font><br><img src="/images2/40.png" alt="图片一"><br><img src="/images2/41.png" alt="图片一"><br><font size="3">&emsp;&emsp;这段代码如果用一个权限比较高的账户执行，有极大地风险，因此需要在检测的过程中加入判断哪些用户的查询，具体细节通过简单的SQL即可实现，此处不表。<br>&emsp;&emsp;于是乎，每次工作，首先开启此段代码。由于这段代码可以保护正常查询，且杀掉锁表的语句，因此我给它起了两个名字——“<strong>摇篮</strong>”和“<strong>断头台</strong>”。</font>
+        <font size="3"><br>&emsp;&emsp;最近数据分析所使用的 OLTP库常常出现原子锁，即元数据锁。以及各种查询时长超长，且失控的查询进程，为此写了一段Julia代码进行定时处理。<br>&emsp;&emsp;所要杀死的进程分为两类：<br>&emsp;&emsp;（1）超过850s的查询语句；<br>&emsp;&emsp;（2）产生“Waiting for table metadata lock”的查询。<br>&emsp;&emsp;主要结构由三个函数构成，一个函数用来调度，两个函数用来监测并执行kill语句。</font><br><br><font size="2">&emsp;&emsp;要实现上述功能，需要用到Julia中的三个包：<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">MySQL</font>包：用来连接数据库；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">DataFrames</font>包：和MySQL包配合使用，用来监测进程；<br>&emsp;&emsp;<font size="3" color="#436EEE" style="font-weight:bold">Dates</font>包：用来计时。<br></font><br><br><font size="2">&emsp;&emsp;首先引入这几个包。在引入的过程中既可以用using，也可以用import，只不过用import引入时，在调用包内函数时需要在函数前写上包名，而用using则不必，但是在函数名有冲突的时候会很麻烦，因此除非是非常常用的包，笔者并不建议使用using。</font><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/37.png" alt="图片一"><br><font size="3">&emsp;&emsp;先写一个函数start()作为入口，用于启动程序<br>&emsp;&emsp;1、连接数据库。</font><br><font size="2">&emsp;&emsp;第一个参数为数据库的IP地址，第二个为用户名，第三个为密码，db为数据库名，port为端口。</font><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/38.png" alt="图片一"><br><font size="3">&emsp;&emsp;2、写一个死循环，反复调用检测和杀进程函数。</font><br><font size="2">&emsp;&emsp;kill_by_lock()函数用于杀掉产生元数据锁的进程，kill_by_time()函数用于杀掉时间超过850s的查询。count变量用来统计执行轮数，每执行一轮加一并打印。sleep()函数用于休眠，是Dates包中的函数，参数为秒。总体而言，start()函数的意思就是每隔十秒检测一次产生原子锁和超时的查询，满足条件则杀掉。</font><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/39.png" alt="图片一"><br><font size="3">&emsp;&emsp;3、杀原子锁和超时查询的函数。</font><br><font size="2">&emsp;&emsp;这两个函数的结构类似，都是先查后杀。以kill_by_lock()为例。第25行为查询进程的SQL语句，第26行为进行查询并使用DataFrame承接返回结果。顺带提一句，Julia中的DataFrame与Python和R中的DataFrame又是另一种感觉，但使用上依旧是很方便。第27到32行的for循环则是遍历查询结果，并清除进程，如果没有满足条件的进程则自行跳过。同理，在后面补上杀超时查询的函数。<br></font><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/40.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/41.png" alt="图片一"><br><font size="3">&emsp;&emsp;这段代码如果用一个权限比较高的账户执行，有极大地风险，因此需要在检测的过程中加入判断哪些用户的查询，具体细节通过简单的SQL即可实现，此处不表。<br>&emsp;&emsp;于是乎，每次工作，首先开启此段代码。由于这段代码可以保护正常查询，且杀掉锁表的语句，因此我给它起了两个名字——“<strong>摇篮</strong>”和“<strong>断头台</strong>”。</font>
 
 
       

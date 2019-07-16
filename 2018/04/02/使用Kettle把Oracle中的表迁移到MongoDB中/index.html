@@ -88,27 +88,27 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="上篇文章讲述了在Windows环境下安装配置MongoDB，这篇就介绍一下如何把Oracle中的表迁移到MongoDB中。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.xuexinyu.com/images/133.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/134.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/135.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/136.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/137.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/138.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/139.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/140.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/141.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/142.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/143.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/144.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/145.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/146.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/147.png">
-<meta property="og:image" content="http://www.xuexinyu.com/images/148.png">
-<meta property="og:updated_time" content="2019-07-16T10:00:34.476Z">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/133.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/134.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/135.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/136.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/137.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/138.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/139.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/140.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/141.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/142.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/143.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/144.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/145.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/146.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/147.png">
+<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/148.png">
+<meta property="og:updated_time" content="2019-07-16T13:52:13.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Kettle把Oracle中的表迁移到MongoDB中">
 <meta name="twitter:description" content="上篇文章讲述了在Windows环境下安装配置MongoDB，这篇就介绍一下如何把Oracle中的表迁移到MongoDB中。">
-<meta name="twitter:image" content="http://www.xuexinyu.com/images/133.png">
+<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/133.png">
 
 
 
@@ -386,10 +386,10 @@
 
       
         <p><em>&emsp;&emsp;<font color="#436EEE">上篇文章讲述了在Windows环境下安装配置MongoDB，这篇就介绍一下如何把Oracle中的表迁移到MongoDB中。</font></em></p>
-<h1 id="一、常规情况"><a href="#一、常规情况" class="headerlink" title="一、常规情况"></a>一、常规情况</h1><p>1、首先打开Kettle，新建一个转换，然后新建Oracle连接。具体细节在此不再赘述。<br><img src="/images/133.png" alt="图片一"><br>2、选择表输入<br><img src="/images/134.png" alt="图片一"><br>3、获取相关表的查询输入，并且将表的字段包含在内<br><img src="/images/135.png" alt="图片一"><br>4、由于MongoDB中存储的都是json，所以需要把Oracle的表输入转为json输出，因此在输出中选择json输出<br><img src="/images/136.png" alt="图片一"><br>5、打开Big Data，按同上的方法把MongoDB Output拖到工作空间，然后按着shift，点击鼠标左键，把各步骤连接起来<br><img src="/images/137.png" alt="图片一"><br>6、接下来配置json output，如下图所示<br><img src="/images/138.png" alt="图片一"><br><img src="/images/139.png" alt="图片一"><br>7、编辑MongoDB output，配置地址和端口<br><img src="/images/140.png" alt="图片一"><br>8、然后配置dbs和连接<br><img src="/images/141.png" alt="图片一"><br>9、获取每一列的列名<br><img src="/images/142.png" alt="图片一"><br>10、然后执行，如果能成功则十分幸运，但成功不了则有一些问题，下面一章讲述问题</p>
-<h1 id="二、遇到的问题"><a href="#二、遇到的问题" class="headerlink" title="二、遇到的问题"></a>二、遇到的问题</h1><h2 id="1、MongoDB的连接问题"><a href="#1、MongoDB的连接问题" class="headerlink" title="1、MongoDB的连接问题"></a>1、MongoDB的连接问题</h2><p>1、由于初次使用MongoDB，所以并不了解MongoDB的连接情况，经过查资料发现，首先要打开MongoDB的命令行，切换到admin数据库<br><img src="/images/143.png" alt="图片一"><br>2、然后为admin用户设置密码，并授权连接，这样就能使用admin用户连接了<br><img src="/images/144.png" alt="图片一"><br>3、接着连接MongoDB compass，新建连接名为admin_1的数据库连接<br><img src="/images/145.png" alt="图片一"><br><img src="/images/146.png" alt="图片一"></p>
-<h2 id="2、由Oracle向json向MongoDB的转换问题"><a href="#2、由Oracle向json向MongoDB的转换问题" class="headerlink" title="2、由Oracle向json向MongoDB的转换问题"></a>2、由Oracle向json向MongoDB的转换问题</h2><p>1、如果你的Oracle表中存在时间日期格式，那么在转换的过程中会遇到不方便存储的问题，因此在Oracle表输入环节中需要转化一下<br><img src="/images/147.png" alt="图片一"></p>
-<h2 id="3、更新还是覆盖"><a href="#3、更新还是覆盖" class="headerlink" title="3、更新还是覆盖"></a>3、更新还是覆盖</h2><p>在Output options中配置Database和Collection，如果每次都清空表的话 选择 Truncate collection。增量更新则不能选择 Truncate collection<br><img src="/images/148.png" alt="图片一"></p>
+<h1 id="一、常规情况"><a href="#一、常规情况" class="headerlink" title="一、常规情况"></a>一、常规情况</h1><p>1、首先打开Kettle，新建一个转换，然后新建Oracle连接。具体细节在此不再赘述。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/133.png" alt="图片一"><br>2、选择表输入<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/134.png" alt="图片一"><br>3、获取相关表的查询输入，并且将表的字段包含在内<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/135.png" alt="图片一"><br>4、由于MongoDB中存储的都是json，所以需要把Oracle的表输入转为json输出，因此在输出中选择json输出<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/136.png" alt="图片一"><br>5、打开Big Data，按同上的方法把MongoDB Output拖到工作空间，然后按着shift，点击鼠标左键，把各步骤连接起来<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/137.png" alt="图片一"><br>6、接下来配置json output，如下图所示<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/138.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/139.png" alt="图片一"><br>7、编辑MongoDB output，配置地址和端口<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/140.png" alt="图片一"><br>8、然后配置dbs和连接<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/141.png" alt="图片一"><br>9、获取每一列的列名<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/142.png" alt="图片一"><br>10、然后执行，如果能成功则十分幸运，但成功不了则有一些问题，下面一章讲述问题</p>
+<h1 id="二、遇到的问题"><a href="#二、遇到的问题" class="headerlink" title="二、遇到的问题"></a>二、遇到的问题</h1><h2 id="1、MongoDB的连接问题"><a href="#1、MongoDB的连接问题" class="headerlink" title="1、MongoDB的连接问题"></a>1、MongoDB的连接问题</h2><p>1、由于初次使用MongoDB，所以并不了解MongoDB的连接情况，经过查资料发现，首先要打开MongoDB的命令行，切换到admin数据库<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/143.png" alt="图片一"><br>2、然后为admin用户设置密码，并授权连接，这样就能使用admin用户连接了<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/144.png" alt="图片一"><br>3、接着连接MongoDB compass，新建连接名为admin_1的数据库连接<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/145.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/146.png" alt="图片一"></p>
+<h2 id="2、由Oracle向json向MongoDB的转换问题"><a href="#2、由Oracle向json向MongoDB的转换问题" class="headerlink" title="2、由Oracle向json向MongoDB的转换问题"></a>2、由Oracle向json向MongoDB的转换问题</h2><p>1、如果你的Oracle表中存在时间日期格式，那么在转换的过程中会遇到不方便存储的问题，因此在Oracle表输入环节中需要转化一下<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/147.png" alt="图片一"></p>
+<h2 id="3、更新还是覆盖"><a href="#3、更新还是覆盖" class="headerlink" title="3、更新还是覆盖"></a>3、更新还是覆盖</h2><p>在Output options中配置Database和Collection，如果每次都清空表的话 选择 Truncate collection。增量更新则不能选择 Truncate collection<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/148.png" alt="图片一"></p>
 
       
     </div>
