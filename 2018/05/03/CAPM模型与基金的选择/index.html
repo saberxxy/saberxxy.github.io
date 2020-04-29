@@ -88,20 +88,20 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="对于经济与金融的学习是我长期坚持不间断的，这次将我比较熟悉的CAPM模型与基金的选择相结合，通过对收益率及风险的分析对基金的投资提出建议。注：本文的分析通过R语言完成。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/168.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/169.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/170.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/171.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/172.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/173.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/174.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/175.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/176.png">
-<meta property="og:updated_time" content="2019-07-16T13:42:50.952Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images/168.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/169.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/170.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/171.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/172.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/173.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/174.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/175.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/176.png">
+<meta property="og:updated_time" content="2020-04-29T04:20:11.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CAPM模型与基金的选择">
 <meta name="twitter:description" content="对于经济与金融的学习是我长期坚持不间断的，这次将我比较熟悉的CAPM模型与基金的选择相结合，通过对收益率及风险的分析对基金的投资提出建议。注：本文的分析通过R语言完成。">
-<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/168.png">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images/168.png">
 
 
 
@@ -378,7 +378,7 @@
       
 
       
-        <p><em>&emsp;&emsp;<font color="#436EEE">对于经济与金融的学习是我长期坚持不间断的，这次将我比较熟悉的CAPM模型与基金的选择相结合，通过对收益率及风险的分析对基金的投资提出建议。注：本文的分析通过R语言完成。</font></em><br>1、首先选取了五支投资中的基金：002001，090013，110022，180012，320010，数据结构包含时间和净值，时间跨度是2018年第一季度，即2018-01-01至2018-03-31。<br>2、其次选取了上证指数（SSE）2018年第一季度的收盘价，同样包含时间列。<br>3、将上述六列数据加时间，合并为一个数据框。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/168.png" alt="图片一"><br>4、该数据框共有59行7列。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/169.png" alt="图片一"><br>5、计算五支基金和上证指数的日收益率。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/170.png" alt="图片一"><br>6、将日收益率合并，并转化为XTS格式的时间序列数据。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/171.png" alt="图片一"><br>7、CAPM模型需要选取无风险收益，此处选取2018年三年期国债的收益率，即年收益率4%，并将收益率日化，即除以365。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/172.png" alt="图片一"><br>8、使用R语言的包PerformanceAnalytics，计算六者的平均年化收益率，标准差以及Sharpe。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/173.png" alt="图片一"><br>9、查看收益情况。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/174.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/175.png" alt="图片一"><br>10、使用CAPM模型计算Alpha和Beta。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/176.png" alt="图片一"><br>11、在CAPM模型中，Alpha和Beta分别代表了盈利能力和风险，通过计算我们发现，002001和090013的盈利能力较强，且002001的风险相对不高，所以通过分析得出结论，002001值得投资。<br>12、这次只是对于模型使用的初探，该模型诞生至今七八十年，其中的很多假设早已不适用，但其优雅且简单的公式描述依旧使其具有长久的生命力，在股票上市定价中也常常使用该模型作为初始定价。对于该模型的研究，我从未停止。</p>
+        <p><em>&emsp;&emsp;<font color="#436EEE">对于经济与金融的学习是我长期坚持不间断的，这次将我比较熟悉的CAPM模型与基金的选择相结合，通过对收益率及风险的分析对基金的投资提出建议。注：本文的分析通过R语言完成。</font></em><br>1、首先选取了五支投资中的基金：002001，090013，110022，180012，320010，数据结构包含时间和净值，时间跨度是2018年第一季度，即2018-01-01至2018-03-31。<br>2、其次选取了上证指数（SSE）2018年第一季度的收盘价，同样包含时间列。<br>3、将上述六列数据加时间，合并为一个数据框。<br><img src="/images/168.png" alt="图片一"><br>4、该数据框共有59行7列。<br><img src="/images/169.png" alt="图片一"><br>5、计算五支基金和上证指数的日收益率。<br><img src="/images/170.png" alt="图片一"><br>6、将日收益率合并，并转化为XTS格式的时间序列数据。<br><img src="/images/171.png" alt="图片一"><br>7、CAPM模型需要选取无风险收益，此处选取2018年三年期国债的收益率，即年收益率4%，并将收益率日化，即除以365。<br><img src="/images/172.png" alt="图片一"><br>8、使用R语言的包PerformanceAnalytics，计算六者的平均年化收益率，标准差以及Sharpe。<br><img src="/images/173.png" alt="图片一"><br>9、查看收益情况。<br><img src="/images/174.png" alt="图片一"><br><img src="/images/175.png" alt="图片一"><br>10、使用CAPM模型计算Alpha和Beta。<br><img src="/images/176.png" alt="图片一"><br>11、在CAPM模型中，Alpha和Beta分别代表了盈利能力和风险，通过计算我们发现，002001和090013的盈利能力较强，且002001的风险相对不高，所以通过分析得出结论，002001值得投资。<br>12、这次只是对于模型使用的初探，该模型诞生至今七八十年，其中的很多假设早已不适用，但其优雅且简单的公式描述依旧使其具有长久的生命力，在股票上市定价中也常常使用该模型作为初始定价。对于该模型的研究，我从未停止。</p>
 
       
     </div>
@@ -580,7 +580,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

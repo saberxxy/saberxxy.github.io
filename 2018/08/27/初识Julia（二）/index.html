@@ -88,20 +88,20 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="初识Julia（二）这是关于Julia的第二篇文章，主要介绍一些这门语言的简单语法，实现一些小算法，以及杂七杂八的东西。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/28.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/29.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/30.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/31.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/32.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/33.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/34.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/35.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/36.png">
-<meta property="og:updated_time" content="2019-07-16T13:49:34.039Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/28.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/29.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/30.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/31.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/32.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/33.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/34.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/35.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/36.png">
+<meta property="og:updated_time" content="2020-04-29T05:14:24.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Julia（二）">
 <meta name="twitter:description" content="初识Julia（二）这是关于Julia的第二篇文章，主要介绍一些这门语言的简单语法，实现一些小算法，以及杂七杂八的东西。">
-<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/28.png">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images2/28.png">
 
 
 
@@ -379,10 +379,10 @@
 
       
         <p><font size="3">&emsp;&emsp;好事多磨，Julia这门语言火了之后，我就迫不及待的入坑了，然而入坑之后发现，并没有想象的那么简单，首先搭建IDE就是一个很复杂的过程，具体做法网上有些教程，基本是用Atom+Julia Pro。总之，整个过程虽然对新手不算太友好，没有PyCharm和RStudio这种强大且安装简单的IDE，但是细心操作之下，还是可以做到的。</font><br><br></p>
-<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>&emsp;&emsp;同所有的语言一样，第一句还是万能的开头——Hello World。<br>&emsp;&emsp;因为听说Julia的语法结构与Python颇为类似，于是乎，我是这么写的，运行之下，马上就报错了，查了一下资料才发现，引号要用双引号，单引号不可用。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/28.png" alt="图片一"><br>&emsp;&emsp;修改过后，如下。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/29.png" alt="图片一"></p>
-<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>&emsp;&emsp;因为Julia是动态语言，可解释可编译。在简单看过一些语法之后，直接上手，想写个冒泡排序。<br>&emsp;&emsp;完整的代码是这样的。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/30.png" alt="图片一"><br>&emsp;&emsp;我们可以看到，Julia的代码结构和Python有些类似，但又和VB有点接近，需要注意的是function、if、for之类的结构后不像Python一样使用冒号，且在结束时要使用end作为标记，运行之后结果如下。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/31.png" alt="图片一"><br>&emsp;&emsp;有一点需要注意一下，Julia的print函数是不换行的，println换行。当然也可以使用\n达到换行的效果。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/32.png" alt="图片一"></p>
-<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>&emsp;&emsp;作为程序语言的基础入门程序，顺带写一下九九乘法表，代码很简单。简单的循环即可实现。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/33.png" alt="图片一"></p>
-<h1 id="关于Julia的一些事情"><a href="#关于Julia的一些事情" class="headerlink" title="关于Julia的一些事情"></a>关于Julia的一些事情</h1><p>&emsp;&emsp;（1）如果你尝试在百度上检索Julia，最好不要只搜Julia，这样你会搜索到一些奇怪的东西。就像R一样，这门语言在检索方面不太方便，建议在搜索时使用“Julia语言”。当然，如果你要在Stack Overflow等专业网站上，则直接搜索Julia即可，但相信我，内容同样少的可怜。<br>&emsp;&emsp;（2）有一个地址你一定要知道：<a href="https://pkg.julialang.org/" target="_blank" rel="noopener">https://pkg.julialang.org/</a> 这上面是Julia的各种包，每个包直接点进去就是GitHub的源码，当然悲剧的是这些包有很多尚不支持1.0版本，有些甚至只支持到0.6（手动捂脸）。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/34.png" alt="图片一"><br>&emsp;&emsp;（3）string在Julia当中不是用来声明变量类型的，而是一个函数，用于连接字符串。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/35.png" alt="图片一"><br>&emsp;&emsp;（4）查看变量类型使用的函数是typeof。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/36.png" alt="图片一"><br>&emsp;&emsp;（5）和Python以及R一样，包才是Julia的精髓，虽然上面所说，很多包目前都不好使，但未来马上会变好，很快，而且我相信会越来越好，那么如何安装第三方包呢？<br>&emsp;&emsp;首先执行</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>&emsp;&emsp;同所有的语言一样，第一句还是万能的开头——Hello World。<br>&emsp;&emsp;因为听说Julia的语法结构与Python颇为类似，于是乎，我是这么写的，运行之下，马上就报错了，查了一下资料才发现，引号要用双引号，单引号不可用。<br><img src="/images2/28.png" alt="图片一"><br>&emsp;&emsp;修改过后，如下。<br><img src="/images2/29.png" alt="图片一"></p>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>&emsp;&emsp;因为Julia是动态语言，可解释可编译。在简单看过一些语法之后，直接上手，想写个冒泡排序。<br>&emsp;&emsp;完整的代码是这样的。<br><img src="/images2/30.png" alt="图片一"><br>&emsp;&emsp;我们可以看到，Julia的代码结构和Python有些类似，但又和VB有点接近，需要注意的是function、if、for之类的结构后不像Python一样使用冒号，且在结束时要使用end作为标记，运行之后结果如下。<br><img src="/images2/31.png" alt="图片一"><br>&emsp;&emsp;有一点需要注意一下，Julia的print函数是不换行的，println换行。当然也可以使用\n达到换行的效果。<br><img src="/images2/32.png" alt="图片一"></p>
+<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><p>&emsp;&emsp;作为程序语言的基础入门程序，顺带写一下九九乘法表，代码很简单。简单的循环即可实现。<br><img src="/images2/33.png" alt="图片一"></p>
+<h1 id="关于Julia的一些事情"><a href="#关于Julia的一些事情" class="headerlink" title="关于Julia的一些事情"></a>关于Julia的一些事情</h1><p>&emsp;&emsp;（1）如果你尝试在百度上检索Julia，最好不要只搜Julia，这样你会搜索到一些奇怪的东西。就像R一样，这门语言在检索方面不太方便，建议在搜索时使用“Julia语言”。当然，如果你要在Stack Overflow等专业网站上，则直接搜索Julia即可，但相信我，内容同样少的可怜。<br>&emsp;&emsp;（2）有一个地址你一定要知道：<a href="https://pkg.julialang.org/" target="_blank" rel="noopener">https://pkg.julialang.org/</a> 这上面是Julia的各种包，每个包直接点进去就是GitHub的源码，当然悲剧的是这些包有很多尚不支持1.0版本，有些甚至只支持到0.6（手动捂脸）。<br><img src="/images2/34.png" alt="图片一"><br>&emsp;&emsp;（3）string在Julia当中不是用来声明变量类型的，而是一个函数，用于连接字符串。<br><img src="/images2/35.png" alt="图片一"><br>&emsp;&emsp;（4）查看变量类型使用的函数是typeof。<br><img src="/images2/36.png" alt="图片一"><br>&emsp;&emsp;（5）和Python以及R一样，包才是Julia的精髓，虽然上面所说，很多包目前都不好使，但未来马上会变好，很快，而且我相信会越来越好，那么如何安装第三方包呢？<br>&emsp;&emsp;首先执行</p>
 <blockquote>
 <p><strong>using Pkg</strong></p>
 </blockquote>
@@ -617,7 +617,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

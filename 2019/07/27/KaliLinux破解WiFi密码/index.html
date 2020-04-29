@@ -88,21 +88,21 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="本教程使用Kali Linux，运行在VMWare虚拟机上，以及一个USB无线网卡">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/1.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/2.jpg">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/3.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/4.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/5.jpg">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/6.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/7.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/8.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/9.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/10.png">
-<meta property="og:updated_time" content="2019-07-27T11:06:06.467Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/1.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/2.jpg">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/3.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/4.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/5.jpg">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/6.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/7.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/8.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/9.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images3/10.png">
+<meta property="og:updated_time" content="2020-04-29T04:24:01.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KaliLinux破解WiFi密码">
 <meta name="twitter:description" content="本教程使用Kali Linux，运行在VMWare虚拟机上，以及一个USB无线网卡">
-<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/1.png">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images3/1.png">
 
 
 
@@ -379,22 +379,22 @@
       
 
       
-        <p>本教程使用Kali Linux，运行在VMWare虚拟机上，以及一个USB无线网卡<br>1、安装Kali Linux并启动<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/1.png" alt="图片一"></p>
-<p>2、插入USB无线网卡，并在虚拟机中打开，选择断开连接<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/2.jpg" alt="图片一"></p>
+        <p>本教程使用Kali Linux，运行在VMWare虚拟机上，以及一个USB无线网卡<br>1、安装Kali Linux并启动<br><img src="/images3/1.png" alt="图片一"></p>
+<p>2、插入USB无线网卡，并在虚拟机中打开，选择断开连接<br><img src="/images3/2.jpg" alt="图片一"></p>
 <p>3、使用如下命令，会发现多了一个wlan0的网卡<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwconfig</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/3.png" alt="图片一"></p>
+<p><img src="/images3/3.png" alt="图片一"></p>
 <p>4、执行如下命令，开启网卡的嗅探模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airmon-ng start wlan0</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/4.png" alt="图片一"></p>
+<p><img src="/images3/4.png" alt="图片一"></p>
 <p>5、使用如下命令，查找周围的WiFi网络<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng wlan0mon</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/5.jpg" alt="图片一"></p>
+<p><img src="/images3/5.jpg" alt="图片一"></p>
 <p>6、我们选取第一个进行破解（我自己的）<br>7、要注意bssid和ch两个字段，下面的破解需要用到。<br>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng -c 1 --bssid 78:44:FD:B2:23:AE  -w /root/cap wlan0mon</span><br></pre></td></tr></table></figure></p>
-<p>注意上面的命令 -c后面的参数是sh的值，也就是信道，–bssid后面的参数是bssid的值，也就是路由器的mac地址，-w后面的参数是抓包文件存储的位置，最后的wlan0mon则是所用的网卡，同上。<br>使用网卡的监听模式抓取周围的无线网络数据包。对我们最重要的数据包是包含密码的包，即“握手包”。当有新用户或断开用户自动连接wifi时，会发送握手包。我们就是通过攻击红框内的设备，等待抓取其重连时的握手包，来破解密码的。如果顺利的话，会在黄色方框的位置出现握手包的信息，但是运气不好的话会等很久，很烦。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/6.png" alt="图片一"></p>
+<p>注意上面的命令 -c后面的参数是sh的值，也就是信道，–bssid后面的参数是bssid的值，也就是路由器的mac地址，-w后面的参数是抓包文件存储的位置，最后的wlan0mon则是所用的网卡，同上。<br>使用网卡的监听模式抓取周围的无线网络数据包。对我们最重要的数据包是包含密码的包，即“握手包”。当有新用户或断开用户自动连接wifi时，会发送握手包。我们就是通过攻击红框内的设备，等待抓取其重连时的握手包，来破解密码的。如果顺利的话，会在黄色方框的位置出现握手包的信息，但是运气不好的话会等很久，很烦。<br><img src="/images3/6.png" alt="图片一"></p>
 <p>8、既然等不了这么久，我们不如选一台设备主动出击。有一个叫aireplay-ng的工具，它可以强制用户断开WiFi连接；原理是，给连接到wifi的一个设备发送一个deauth（反认证）包，让那个设备断开WiFi，随后它自然会再次连接WiFi。<br>我们选择04:CF:8C:D9:0E:DD ，这台设备下手。<br>打开新终端，执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aireplay-ng -0 2 -a 78:44:FD:B2:23:AE -c 04:CF:8C:D9:0E:DD wlan0mon</span><br></pre></td></tr></table></figure></p>
-<p>注意这条命令，-a后面的参数是要攻击的路由器的mac地址，-c后面的参数是要强制断开的设备的mac地址。<br>攻击立竿见影，马上获得了握手包。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/7.png" alt="图片一"></p>
-<p>9、我们停止抓包，打开根目录，发现了我们要的握手包<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/8.png" alt="图片一"></p>
+<p>注意这条命令，-a后面的参数是要攻击的路由器的mac地址，-c后面的参数是要强制断开的设备的mac地址。<br>攻击立竿见影，马上获得了握手包。<br><img src="/images3/7.png" alt="图片一"></p>
+<p>9、我们停止抓包，打开根目录，发现了我们要的握手包<br><img src="/images3/8.png" alt="图片一"></p>
 <p>10、接下来就是跑字典破解了<br>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aircrack-ng -a2 -b 78:44:FD:B2:23:AE -w /usr/share/wordlists/rockyou.txt /root/cap-01.cap</span><br></pre></td></tr></table></figure></p>
-<p>静静等待。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/9.png" alt="图片一"></p>
-<p>11、如果可以破解，密码会在这个位置出现，如果搞不定呢，就要换密码字典了<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images3/10.png" alt="图片一"></p>
+<p>静静等待。<br><img src="/images3/9.png" alt="图片一"></p>
+<p>11、如果可以破解，密码会在这个位置出现，如果搞不定呢，就要换密码字典了<br><img src="/images3/10.png" alt="图片一"></p>
 
       
     </div>
@@ -590,7 +590,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

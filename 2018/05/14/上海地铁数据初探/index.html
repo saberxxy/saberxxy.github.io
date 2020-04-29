@@ -88,22 +88,22 @@
 <meta property="og:site_name" content="东皇">
 <meta property="og:description" content="前不久从某学弟处获得了上海地铁2015年4月1日的数据，故此分析一下，作为初探。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/1.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/2.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/3.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/4.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/5.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/6.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/1.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/2.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/3.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/4.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/5.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/6.png">
 <meta property="og:image" content="http://www.xuexinyu.com/images2/7.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/8.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/9.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/10.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/11.png">
-<meta property="og:updated_time" content="2019-07-16T13:51:34.424Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/8.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/9.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/10.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images2/11.png">
+<meta property="og:updated_time" content="2020-04-29T05:15:37.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上海地铁数据初探">
 <meta name="twitter:description" content="前不久从某学弟处获得了上海地铁2015年4月1日的数据，故此分析一下，作为初探。">
-<meta name="twitter:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/1.png">
+<meta name="twitter:image" content="http://www.xuexinyu.com/images2/1.png">
 
 
 
@@ -380,7 +380,7 @@
       
 
       
-        <p><em>&emsp;&emsp;<font color="#436EEE">前不久从某学弟处获得了上海地铁2015年4月1日的数据，故此分析一下，作为初探。</font></em><br>1、数据的结构如下所示。共1048576行，其中A列代表卡号，B列为日期，C列为时间，D列为车站，E列为交通方式，此处全为地铁，F列为金额，为0则代表乘车站，G列为是否优惠。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/1.png" alt="图片一"><br>2、将上面的数据进行整理，使用Python代码存入MySQL数据库，便于分析。<br>3、入库后的表结构如下所示。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/2.png" alt="图片一"><br>4、数据如下所示。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/3.png" alt="图片一"><br>5、入库代码的核心部分如下所示。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/4.png" alt="图片一"><br>6、入库之后，使用SQL进行统计分析，并通过Excel进行展示。<br>7、进出站时间概览。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/5.png" alt="图片一"><br>从图中我们可以看到进站与出站数量呈现出明显的双峰，两个封顶出现在上午7-9点和下午5-7点，由于2015年4月1日是工作日，所以属于正常现象。<br>8、对进出信息进行分析。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/6.png" alt="图片一"><br>9、上下车情况概览<br><img src="/images2/7.png" alt="图片一"><br>10、以下是分析所涉及到的SQL代码。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/8.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/9.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/10.png" alt="图片一"><br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images2/11.png" alt="图片一"></p>
+        <p><em>&emsp;&emsp;<font color="#436EEE">前不久从某学弟处获得了上海地铁2015年4月1日的数据，故此分析一下，作为初探。</font></em><br>1、数据的结构如下所示。共1048576行，其中A列代表卡号，B列为日期，C列为时间，D列为车站，E列为交通方式，此处全为地铁，F列为金额，为0则代表乘车站，G列为是否优惠。<br><img src="/images2/1.png" alt="图片一"><br>2、将上面的数据进行整理，使用Python代码存入MySQL数据库，便于分析。<br>3、入库后的表结构如下所示。<br><img src="/images2/2.png" alt="图片一"><br>4、数据如下所示。<br><img src="/images2/3.png" alt="图片一"><br>5、入库代码的核心部分如下所示。<br><img src="/images2/4.png" alt="图片一"><br>6、入库之后，使用SQL进行统计分析，并通过Excel进行展示。<br>7、进出站时间概览。<br><img src="/images2/5.png" alt="图片一"><br>从图中我们可以看到进站与出站数量呈现出明显的双峰，两个封顶出现在上午7-9点和下午5-7点，由于2015年4月1日是工作日，所以属于正常现象。<br>8、对进出信息进行分析。<br><img src="/images2/6.png" alt="图片一"><br>9、上下车情况概览<br><img src="/images2/7.png" alt="图片一"><br>10、以下是分析所涉及到的SQL代码。<br><img src="/images2/8.png" alt="图片一"><br><img src="/images2/9.png" alt="图片一"><br><img src="/images2/10.png" alt="图片一"><br><img src="/images2/11.png" alt="图片一"></p>
 
       
     </div>
@@ -584,7 +584,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

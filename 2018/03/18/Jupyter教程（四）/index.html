@@ -89,11 +89,11 @@
 <meta property="og:description" content="本篇主要讲如何在Jupyter中编写R语言代码">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.xuexinyu.com/images/109.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/110.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/111.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/112.png">
-<meta property="og:image" content="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/113.png">
-<meta property="og:updated_time" content="2019-07-16T13:44:59.543Z">
+<meta property="og:image" content="http://www.xuexinyu.com/images/110.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/111.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/112.png">
+<meta property="og:image" content="http://www.xuexinyu.com/images/113.png">
+<meta property="og:updated_time" content="2020-04-29T04:22:22.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jupyter教程（四）">
 <meta name="twitter:description" content="本篇主要讲如何在Jupyter中编写R语言代码">
@@ -376,8 +376,8 @@
       
         <p><em>&emsp;&emsp;<font color="#436EEE">在数据分析领域，R和Python的地位相当，甚至在统计学当中R的地位还要高于Python，所以作为一个数据分析师，你一定要会一些R语言。至于如何安装R和IDE这里就不讲了，这篇文章主要讲一下如何在Jupyter中写R代码。</font></em><br>1、先在R中安装基础包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(c(&apos;repr&apos;, &apos;IRdisplay&apos;, &apos;evaluate&apos;, &apos;crayon&apos;, &apos;pbdZMQ&apos;, &apos;devtools&apos;, &apos;uuid&apos;, &apos;digest&apos;))</span><br></pre></td></tr></table></figure></p>
 <p>安装的时候注意选择镜像源，一般选择国内的比较快<br><img src="/images/109.png" alt="图片一"><br>2、在R中安装IRkernel，这个包只能选择用GitHub路径安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtools::install_github(&apos;IRkernel/IRkernel&apos;)</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/110.png" alt="图片一"><br>3、设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IRkernel::installspec()</span><br><span class="line">IRkernel::installspec(user = FALSE)</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/111.png" alt="图片一"><br>4、启动Jupyter，然后试一下<br>5、由于在上一次的安装中，把Jupyter的默认打开目录选择为了Python下的目录，在这里写R代码也可以，但不符合代码的管理简便原则，因此还需要回到Jupyter的配置，重新更改配置文件为“Program”目录，也就是笔者存放各种代码的目录。然后重启Jupyter。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/112.png" alt="图片一"><br>6、写两段代码测试一下，完美。<br><img src="http://xxy-blog-pci.oss-cn-beijing.aliyuncs.com/images/113.png" alt="图片一"></p>
+<p><img src="/images/110.png" alt="图片一"><br>3、设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IRkernel::installspec()</span><br><span class="line">IRkernel::installspec(user = FALSE)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/111.png" alt="图片一"><br>4、启动Jupyter，然后试一下<br>5、由于在上一次的安装中，把Jupyter的默认打开目录选择为了Python下的目录，在这里写R代码也可以，但不符合代码的管理简便原则，因此还需要回到Jupyter的配置，重新更改配置文件为“Program”目录，也就是笔者存放各种代码的目录。然后重启Jupyter。<br><img src="/images/112.png" alt="图片一"><br>6、写两段代码测试一下，完美。<br><img src="/images/113.png" alt="图片一"></p>
 
       
     </div>
@@ -579,7 +579,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
